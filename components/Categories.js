@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 const CategoryDiv = styled.div`
   padding-bottom: 260px;
   categoryHeader{
@@ -48,7 +49,7 @@ const CategoryItem = styled.a`
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
   background: #fff;
-  text-decoration: none; /* Remove underline on hover */
+  text-decoration: none;
 
   &:hover {
     transform: scale(1.05);
@@ -78,42 +79,20 @@ const CategoryTitle = styled.p`
 `;
 
 export default function Categories() {
+  const categories = ['Horror', 'Mystery', 'Crime', 'Romance', 'Thriller', 'Suspense', 'Fantasy', 'Mythology', 'Self help', 'Buisness', 'StartUp', 'Investing', 'Trading', 'Parenting', 'Poems', 'Geo political', 'Kids books', 'Autobiography', 'Health', 'Mental' ];
   return (
     <CategoryDiv>
-      <CategoryHeader>
-        <TitleSize>&nbsp;&nbsp;CATEGORIES</TitleSize>
-      </CategoryHeader>
-      <DifCategory>
-        <CategoryItem href="#">
-          <CategoryImg src="/Category_img.jpg" alt="" />
-          <CategoryTitle className="categoryTitle">Self Help</CategoryTitle>
+    <CategoryHeader>
+      <TitleSize>&nbsp;&nbsp;CATEGORIES</TitleSize>
+    </CategoryHeader>
+    <DifCategory>
+      {categories.map((category, index) => (
+        <CategoryItem href={`/products?category=${category}`} key={index}>
+          <CategoryImg src={`/Category_img.jpg`} alt="" />
+          <CategoryTitle className="categoryTitle">{category}</CategoryTitle>
         </CategoryItem>
-
-        <CategoryItem href="#">
-          <CategoryImg src="/Category_img.jpg" alt="" />
-          <CategoryTitle className="categoryTitle">Motivational</CategoryTitle>
-        </CategoryItem>
-
-        <CategoryItem href="#">
-          <CategoryImg src="/Category_img.jpg" alt="" />
-          <CategoryTitle className="categoryTitle">Romantic</CategoryTitle>
-        </CategoryItem>
-
-        <CategoryItem href="#">
-          <CategoryImg src="/Category_img.jpg" alt="" />
-          <CategoryTitle className="categoryTitle">Business</CategoryTitle>
-        </CategoryItem>
-
-        <CategoryItem href="#">
-          <CategoryImg src="/Category_img.jpg" alt="" />
-          <CategoryTitle className="categoryTitle">Fictional</CategoryTitle>
-        </CategoryItem>
-
-        <CategoryItem href="#">
-          <CategoryImg src="/Category_img.jpg" alt="" />
-          <CategoryTitle className="categoryTitle">Self Help</CategoryTitle>
-        </CategoryItem>
-      </DifCategory>
-    </CategoryDiv>
+      ))}
+    </DifCategory>
+  </CategoryDiv>
   );
 }

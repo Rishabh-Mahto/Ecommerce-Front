@@ -6,8 +6,12 @@ const ProductSchema = new Schema({
     summary: String,
     price: { type: Number, required: true},
     images: [{type: [String]}],
-    category: {type: mongoose.Types.ObjectId, ref:'Category'},
-    properties: {type: Object},
+    category: {type: [String]},
+    subCategory: {type: [String]},
+    languages: {type: [String]},
+    discount: {type: Number, default: 0},
+    count: {type: Number},
+    isMembership: {type: Boolean, default: false}
 })
 
 export const Product = models.Product || model('Product', ProductSchema);

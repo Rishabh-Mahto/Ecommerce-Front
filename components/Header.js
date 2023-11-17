@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faBagShopping } from "@fortawesome/free-solid-svg-icons";
-import { CartContext } from "./CartConetxt";
+import { CartContext } from "./CartContext";
 import BarsIcon from "./icons/Bars";
 import Search from "./icons/Search";
 
@@ -121,39 +121,41 @@ export default function Header() {
   return (
     <>
       <StyledHeader>
-          <Wrapper>
-            <Left>
-              <Logo href={"/"}>
-                <h3>ReadOnRent</h3>
-              </Logo>
-            </Left>
-            <NavBtn onClick={() => toggleVisibility()}>
-              <BarsIcon />
-            </NavBtn>
-            <Center hidden={hidden}>
-              <NavLink href={"/products"}>All Products</NavLink>
-              <NavLink href={"/categories"}>Categories</NavLink>
-              <Btn>
-                <NavLink primary={1} href={"/membership"}>
-                  Membership
-                </NavLink>
-              </Btn>
-            </Center>
-            <Right hidden={hidden}>
+        <Wrapper>
+          <Left>
+            <Logo href={"/"}>
+              <h3>ReadOnRent</h3>
+            </Logo>
+          </Left>
+          <NavBtn onClick={() => toggleVisibility()}>
+            <BarsIcon />
+          </NavBtn>
+          <Center hidden={hidden}>
+            <NavLink href={"/products"}>All Products</NavLink>
+            <Btn>
+              <NavLink primary={1} href={"/membership"}>
+                Membership
+              </NavLink>
+            </Btn>
             <NavLink href={"/search"}>
               <Search />
             </NavLink>
-              <NavLink href={"/cart"}>
-                <CartStyle>
-                  <FontAwesomeIcon icon={faBagShopping} style={{ color: "#101011" }} />
-                  <CartCount>{cartProducts.length}</CartCount>
-                </CartStyle>
-              </NavLink>
-              <NavLink href={"/account"}>
-                <FontAwesomeIcon icon={faUser} style={{ color: "#121212" }} />
-              </NavLink>
-            </Right>
-          </Wrapper>
+          </Center>
+          <Right hidden={hidden}>
+            <NavLink href={"/cart"}>
+              <CartStyle>
+                <FontAwesomeIcon
+                  icon={faBagShopping}
+                  style={{ color: "#101011" }}
+                />
+                <CartCount>{cartProducts.length}</CartCount>
+              </CartStyle>
+            </NavLink>
+            <NavLink href={"/account"}>
+              <FontAwesomeIcon icon={faUser} style={{ color: "#121212" }} />
+            </NavLink>
+          </Right>
+        </Wrapper>
       </StyledHeader>
     </>
   );

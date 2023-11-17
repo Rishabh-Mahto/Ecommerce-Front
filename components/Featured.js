@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import Button from "./Button";
 import ButtonLink from "./ButtonLink";
-import { CartContext } from "./CartConetxt";
+import { CartContext } from "./CartContext";
 
 const FeaturedDiv = styled.div`
   max-width: 100%;
@@ -32,16 +32,16 @@ const CarouselItems = styled(motion.div)`
   padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
 `;
 
 const BtnDesign = styled.div`
   display: flex;
   justify-content: flex-end;
-  align-items: center; 
+  align-items: center;
   gap: 50px;
   padding: 8px 0;
-`
+`;
 
 const ItemsImg = styled.img`
   width: 100%;
@@ -53,7 +53,7 @@ const ItemsImg = styled.img`
 `;
 
 export default function Featured({ firstImages }) {
-  const {addProduct} = useContext(CartContext);
+  const { addProduct } = useContext(CartContext);
 
   const [width, setWidth] = useState(0);
   const carousel = useRef();
@@ -66,20 +66,21 @@ export default function Featured({ firstImages }) {
     <FeaturedDiv>
       <Slider>
         <Carousel ref={carousel}>
-          <InnerCarousel
-            drag="x"
-            dragConstraints={{ right: 0, left: -width }}
-          >
+          <InnerCarousel drag="x" dragConstraints={{ right: 0, left: -width }}>
             {firstImages.map((image, index) => (
               <CarouselItems key={index} className="items">
                 <ItemsImg src={image.firstImage} alt="" />
                 <BtnDesign>
-                <div>
-                  <ButtonLink href={'/product/'+image._id} secondary={1} >Read More</ButtonLink>
-                </div>
-                <div>
-                  <Button primary={1} onClick={() => addProduct(image._id)} ><FontAwesomeIcon icon={faCartShopping} /></Button> 
-                </div>
+                  <div>
+                    <ButtonLink href={"/product/" + image._id} secondary={1}>
+                      Read More
+                    </ButtonLink>
+                  </div>
+                  <div>
+                    <Button primary={1} onClick={() => addProduct(image._id)}>
+                      <FontAwesomeIcon icon={faCartShopping} />
+                    </Button>
+                  </div>
                 </BtnDesign>
               </CarouselItems>
             ))}

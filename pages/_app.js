@@ -1,13 +1,12 @@
-import { createGlobalStyle } from "styled-components"
-import { CartContextProvider } from "@/components/CartConetxt";
+import { createGlobalStyle } from "styled-components";
+import { CartContextProvider } from "@/components/CartContext";
 import { SessionProvider } from "next-auth/react";
 
 const GlobalStyles = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto&display=swap');
-  body {
-    
+  *, html, body {
     padding: 0;
     margin: 0; 
+    box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
   }
   hr{
@@ -17,16 +16,18 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-export default function App({ Component, pageProps: {session, ...pageProps} }) {
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}) {
   return (
     <>
       <GlobalStyles />
       <SessionProvider session={session}>
         <CartContextProvider>
-        <Component {...pageProps} />
+          <Component {...pageProps} />
         </CartContextProvider>
       </SessionProvider>
-      
     </>
-  )
+  );
 }

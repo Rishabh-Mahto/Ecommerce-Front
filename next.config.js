@@ -1,10 +1,9 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   reactStrictMode: true,
   compiler: {
     styledComponents: true,
   },
-}
-
-module.exports = nextConfig
- 
+  images: {
+    domains: ["next-readonrent.s3.amazonaws.com"],
+  },
+};

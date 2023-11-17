@@ -1,54 +1,68 @@
-import Header from "@/components/Header"
-import styled from "styled-components"
+import Header from "@/components/Header";
+import styled from "styled-components";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 import ProductsGrid from "@/components/ProductsGrid";
-import axios from "axios";
+import { useSession, signIn, signOut } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const Wrapper = styled.div`
-    margin: 0 20px;
-    padding: 0 60px;
+  margin: 0 60px;
 `;
-
 
 const Title = styled.div`
-    font-size: 2.5em;
-    font-weight: 600;
-    padding: 0.5em;
-`
+  font-size: 2.5em;
+  font-weight: 600;
+  padding: 0.5em;
+`;
 const Center = styled.div`
-    display: inline-block;
-`
+  display: inline-block;
+`;
 const ProdutctCol = styled.div`
-    display: flex;
-    gap: 80px;
-    padding: 0.5em;
+  display: flex;
+  padding: 0.5em;
 `;
 
+export default function ProductsPage({ products }) {
+  const { data, status } = useSession();
+  console.log(data, status);
+  const [books, setBooks] = useState(products);
+  const router = useRouter();
 
+  useEffect(() => {
+    if (router.query.category) {
+      const filteredProducts = products.filter((product) =>
+        product.category.includes(router.query.category)
+      );
+      setBooks(filteredProducts);
+    }
+  }, []);
 
-export default function ProductsPage({products}) {
-    return (
-        <>
-            <Header />
-            <Wrapper>
-                <Center>
-                    <Title>Explore all the Products!</Title>
-                    <ProdutctCol>
-                        <ProductsGrid  products = {products}/>
-                    </ProdutctCol>
-                </Center>
-            </Wrapper>
-        </>
-    )
+  return (
+    <>
+      <Header />
+      <Wrapper>
+        <Center>
+          <Title>Explore all the Books!</Title>
+          <ProdutctCol>
+            <ProductsGrid products={books} />
+          </ProdutctCol>
+        </Center>
+      </Wrapper>
+    </>
+  );
 }
 
 export async function getServerSideProps() {
-    await mongooseConnect();
-    const products = await Product.find({}, null, {sort:{'_id': -1}});
-    return {
-        props: {
-            products: JSON.parse(JSON.stringify(products)),
-        }
-    }
-};
+  await mongooseConnect();
+  const products = await Product.find({}, null, { sort: { _id: -1 } });
+  const nonMembershipProducts = products.filter(
+    (product) => !product.isMembership
+  );
+  return {
+    props: {
+      products: JSON.parse(JSON.stringify(nonMembershipProducts)),
+    },
+  };
+}
