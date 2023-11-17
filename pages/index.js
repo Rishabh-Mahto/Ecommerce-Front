@@ -13,14 +13,9 @@ import { mongooseConnect } from "@/lib/mongoose";
 
 const OverlapContainer = styled.div`
   position: relative;
-  margin-top: -180px;
+  margin-top: -100px;
   z-index: 1;
   display: flex;
-`;
-const OverlapContainer2 = styled.div`
-  position: relative;
-  margin-bottom: -120px;
-  z-index: 1;
 `;
 
 export default function HomePage({ firstImages }) {
@@ -33,9 +28,8 @@ export default function HomePage({ firstImages }) {
       </OverlapContainer>
       <Categories />
       <EventsBanner />
-      <Feedback />
+      {/* <Feedback /> */}
       <Membership />
-      <OverlapContainer2></OverlapContainer2>
       <Footer />
     </div>
   );

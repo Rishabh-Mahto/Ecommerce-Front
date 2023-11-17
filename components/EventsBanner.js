@@ -1,37 +1,66 @@
-import styled from "styled-components"
-import ImgSlideShow from "./ImgSlideShow"
+import styled from "styled-components";
+import ImgSlideShow from "./ImgSlideShow";
+import { EventsImages } from "./data/EventsImages";
 
+const Box = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const EventWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding: 40px;
-`
+  display: flex;
+  width: 90%;
+  height: 500px;
+  background-color: #e1eeff;
+  margin-top: 40px;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 100px;
+  transform: skew(-2.5deg);
+`;
 
-const ContainerStyle = styled.div`
-    width: 700px;
-    height: 380px;
-    box-shadow: 0 8px 32px rgba(0,0,0,.28);
-    border-radius: 12px;
-  
-`
+const ImageContainer = styled.div`
+  width: 700px;
+  height: 380px;
+  margin-right: 50px;
+`;
 
+const TextContainer = styled.div`
+  width: 500px;
+  height: 380px;
+  color: #475569;
+
+  h1 {
+    font-family: "Poppins";
+    font-size: 3rem;
+    line-height: 2.8rem;
+  }
+
+  p {
+    font-family: "Poppins";
+    margin-top: 20px;
+    font-size: 1.2rem;
+  }
+`;
 
 export default function EventsBanner() {
-    const SlidesImgs = [
-        {url: 'event_img1.jpg', title: 'Event1'},
-        {url: 'event_img2.jpg', title: 'Event2'},
-        {url: 'event_img3.jpg', title: 'Event3'},
-        {url: 'event_img4.jpg', title: 'Event4'},
-        {url: 'event_img5.jpg', title: 'Event5'},
-        {url: 'Event_img6.jpg', title: 'Event6'},
-    ];
-    
-    return (
-        <EventWrapper>
-                <ContainerStyle>
-                    <ImgSlideShow SlidesImgs={ SlidesImgs }/>
-                </ContainerStyle>            
-        </EventWrapper>
-    )
+  return (
+    <Box>
+      <EventWrapper>
+        <ImageContainer>
+          <ImgSlideShow SlidesImgs={EventsImages} />
+        </ImageContainer>
+        <TextContainer>
+          <h1>Know About Events conducted by us</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+            blanditiis, corporis soluta porro nam facere iusto ad molestiae,
+            repellat qui, accusantium laboriosam odio consequuntur sit
+            temporibus. Veniam architecto aut aperiam.
+          </p>
+        </TextContainer>
+      </EventWrapper>
+    </Box>
+  );
 }

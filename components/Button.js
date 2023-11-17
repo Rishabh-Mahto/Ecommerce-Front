@@ -1,5 +1,4 @@
-import styled, {css} from "styled-components"
-
+import styled, { css } from "styled-components";
 
 export const ButtonStyle = css`
   align-items: center;
@@ -10,47 +9,49 @@ export const ButtonStyle = css`
   fill: #000;
   font-size: 16px;
   font-weight: 600;
-  height: 48px;
   outline: 0;
   text-align: center;
   text-decoration: none;
 
-  ${props =>
+  ${(props) =>
     props.secondary &&
     css`
-      background-color: #EBEBEB;
+      background-color: #ebebeb;
       border: none;
-      padding: 10px 21px;
-      transition: background-color 0.3s, color 0.3s;
+      padding: 8px 20px;
+      transition: all 0.1s ease-in-out;
+      font-family: "Poppins";
+      font-weight: 500;
 
       &:hover {
-        background-color: #fff; /* Change background on hover */
-        color: #000; /* Change text color on hover */
+        background-color: #fff;
+        color: #000;
+        border: 2px solid #000;
       }
     `}
-    
-  ${props =>
+
+  ${(props) =>
     props.primary &&
     css`
-      background-color: #fff;
-      border: 2px solid #000;
-      padding: 10px;
+      background-color: red;
+      color: white;
+      font-family: Poppins;
+      font-weight: 500;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 24px;
       transition: all 0.3s;
 
       &:hover {
-        border-color: red;
-        color: red;
-        fill: red;
+        background-color: #da0000;
       }
     `}
 `;
 
 const StyledButton = styled.button`
   ${ButtonStyle}
-`
+`;
 
-export default function Button({children,...rest}) {
-    return (
-        <StyledButton {...rest}>{children}</StyledButton>
-    )
+export default function Button({ children, ...rest }) {
+  return <StyledButton {...rest}>{children}</StyledButton>;
 }

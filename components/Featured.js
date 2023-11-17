@@ -7,12 +7,9 @@ import Button from "./Button";
 import ButtonLink from "./ButtonLink";
 import { CartContext } from "./CartContext";
 
-const FeaturedDiv = styled.div`
-  max-width: 100%;
-`;
 const Slider = styled.div`
   margin: 0 auto;
-  width: 50%;
+  width: 57%;
 `;
 
 const Carousel = styled(motion.div)`
@@ -27,8 +24,8 @@ const InnerCarousel = styled(motion.div)`
 `;
 
 const CarouselItems = styled(motion.div)`
-  min-height: 20rem;
-  min-width: 15rem;
+  min-height: 25rem;
+  min-width: 20rem;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -37,10 +34,8 @@ const CarouselItems = styled(motion.div)`
 
 const BtnDesign = styled.div`
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  gap: 50px;
-  padding: 8px 0;
+  margin-top: 8px;
 `;
 
 const ItemsImg = styled.img`
@@ -53,8 +48,6 @@ const ItemsImg = styled.img`
 `;
 
 export default function Featured({ firstImages }) {
-  const { addProduct } = useContext(CartContext);
-
   const [width, setWidth] = useState(0);
   const carousel = useRef();
 
@@ -63,7 +56,7 @@ export default function Featured({ firstImages }) {
   }, []);
 
   return (
-    <FeaturedDiv>
+    <div>
       <Slider>
         <Carousel ref={carousel}>
           <InnerCarousel drag="x" dragConstraints={{ right: 0, left: -width }}>
@@ -71,22 +64,15 @@ export default function Featured({ firstImages }) {
               <CarouselItems key={index} className="items">
                 <ItemsImg src={image.firstImage} alt="" />
                 <BtnDesign>
-                  <div>
-                    <ButtonLink href={"/product/" + image._id} secondary={1}>
-                      Read More
-                    </ButtonLink>
-                  </div>
-                  <div>
-                    <Button primary={1} onClick={() => addProduct(image._id)}>
-                      <FontAwesomeIcon icon={faCartShopping} />
-                    </Button>
-                  </div>
+                  <ButtonLink href={"/product/" + image._id} secondary={1}>
+                    Read More
+                  </ButtonLink>
                 </BtnDesign>
               </CarouselItems>
             ))}
           </InnerCarousel>
         </Carousel>
       </Slider>
-    </FeaturedDiv>
+    </div>
   );
 }
