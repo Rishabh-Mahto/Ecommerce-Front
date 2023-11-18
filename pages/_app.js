@@ -12,7 +12,6 @@ const GlobalStyles = createGlobalStyle`
   hr{
     display: block;
     border: 0;
-    border-top: 2px solid #ccc;
   }
 `;
 

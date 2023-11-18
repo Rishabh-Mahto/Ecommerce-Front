@@ -1,13 +1,19 @@
 import { useState } from "react";
 import styled from "styled-components";
 
+const ImageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
 const Image = styled.img`
   max-width: 100%;
   max-height: 100%;
 `;
+
 const BigImage = styled.img`
   max-width: 100%;
-  max-height: 210px;
+  max-height: 400px;
 `;
 const ImageButtons = styled.div`
   display: flex;
@@ -25,7 +31,7 @@ const ImageButton = styled.div`
             border-color: Transparent;
             opacity: .7;
         `}
-  height: 40px;
+  height: 80px;
   padding: 3px;
   cursor: pointer;
   border-radius: 5px;
@@ -37,7 +43,7 @@ const BigImageWrapper = styled.div`
 export default function ProductImages({ images }) {
   const [activeImage, setActiveImage] = useState(images?.[0]);
   return (
-    <>
+    <ImageContainer>
       <BigImageWrapper>
         <BigImage src={activeImage} />
       </BigImageWrapper>
@@ -52,6 +58,6 @@ export default function ProductImages({ images }) {
           </ImageButton>
         ))}
       </ImageButtons>
-    </>
+    </ImageContainer>
   );
 }

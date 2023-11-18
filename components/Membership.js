@@ -5,6 +5,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { CartContext } from "./CartContext";
 import { MembershipData } from "./data/MembershipData";
 import Button from "./Button";
+import Link from "next/link";
 
 const MembershipContainer = styled.div`
   display: flex;
@@ -53,7 +54,12 @@ const MembershipCard = styled.div`
     font-size: 2.4rem;
   }
 
-  h3 {
+  p {
+    text-decoration: underline;
+    font-family: "Poppins";
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
   }
 `;
 
@@ -113,6 +119,7 @@ export default function Membership() {
             <Button onClick={() => addProduct(data.productId)} primary={1}>
               Add to Cart
             </Button>
+            <p>Important Instructions</p>
           </MembershipCard>
         ))}
       </MembershipCardContainer>

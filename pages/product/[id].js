@@ -8,55 +8,100 @@ import ProductImage from "@/components/ProductImages";
 import Button from "@/components/Button";
 import { CartContext } from "@/components/CartContext";
 
-const ColWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  gap: 35px;
-  margin-top: 35px;
-`;
-const PriceRow = styled.div`
+const ProductContainer = styled.div`
   display: flex;
-  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  padding: 0 200px;
+  margin-top: 40px;
 `;
 
-const Price = styled.span`
+const InfoContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 100px;
+
+  h1 {
+    font-family: "Poppins";
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-family: "Poppins";
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-bottom: 30px;
+    text-transform: capitalize;
+    background: #e1eeff;
+    padding: 4px 12px;
+    border-radius: 8px;
+  }
+
+  p {
+    font-family: "Poppins";
+    font-size: 1rem;
+  }
+`;
+
+const CategoryBox = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+
+const PriceRow = styled.div`
+  display: flex;
+  align-items: flex-end;
+  margin: 20px 0;
+`;
+
+const Price = styled.p`
+  font-size: 1rem;
+  font-family: "Poppins";
+  margin-bottom: 8px;
+  margin-right: 4px;
+  text-decoration: line-through;
+`;
+
+const DiscountedPrice = styled.h5`
   font-size: 2rem;
-  font-weight: bold;
+  font-family: "Poppins";
 `;
 
 export default function ProductPage({ product }) {
   const { addProduct } = useContext(CartContext);
+
   return (
     <>
       <Header />
-      <div>
-        <ColWrapper>
-          <WhiteBox>
-            <ProductImage images={product.images} />
-          </WhiteBox>
+      <ProductContainer>
+        <ProductImage images={product.images} />
+        <InfoContainer>
+          <h1>{product.title}</h1>
+          <CategoryBox>
+            {product.category.map((el) => (
+              <h2>{el}</h2>
+            ))}
+          </CategoryBox>
+          <p>{product.summary}</p>
+          <p>Language : {product.languages}</p>
+          <div>{product.subCategory}</div>
+
+          <PriceRow>
+            <Price>₹ {product.price}</Price>
+            <DiscountedPrice>
+              ₹ {product.price - (product.price * product.discount) / 100}
+            </DiscountedPrice>
+          </PriceRow>
           <div>
-            <h1>{product.title}</h1>
-            <div>{product.category}</div>
-            <p>{product.summary}</p>
-            <PriceRow>
-              <div>
-                <Price>₹{product.price}</Price>
-                <div>
-                  discount{" "}
-                  {product.price - (product.price * product.discount) / 100}
-                </div>
-              </div>
-              <div>
-                <Button primary={1} onClick={() => addProduct(product._id)}>
-                  Add to cart
-                </Button>
-              </div>
-              <div>{product.subCategory}</div>
-            </PriceRow>
-            <div>{product.languages}</div>
+            <Button primary={1} onClick={() => addProduct(product._id)}>
+              Add to cart
+            </Button>
           </div>
-        </ColWrapper>
-      </div>
+        </InfoContainer>
+      </ProductContainer>
     </>
   );
 }

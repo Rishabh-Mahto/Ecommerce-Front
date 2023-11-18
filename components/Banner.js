@@ -13,9 +13,8 @@ export default function Banner() {
 }
 
 const HeroBanner = styled.div`
-  background-image: url("/herobanner.jpg");
-  opacity: 0.8;
-  height: 500px;
+  background-image: url("/herobanner1.jpg");
+  height: 700px;
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;

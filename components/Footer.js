@@ -1,81 +1,143 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-const FooterStyle = styled.div`
-  position: absolute;
-  /* padding-top: 40px; */
-`;
-const FooterPart = styled.div`
-  background-color: #242526;
-  color: white;
-  /* background-size: cover; */
-  padding: 75px 25px 50px 50px;
+const FooterContainer = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  background-color: #242526;
   align-items: center;
-  gap: 150px;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 400px;
+
+  hr {
+    width: 90%;
+    border-top: 0.1px solid #eee;
+    margin: 40px 0 20px 0;
+  }
+
+  p {
+    font-family: "Poppins";
+    font-size: 0.8rem;
+    color: #eee;
+  }
 `;
+
+const FooterPart = styled.div`
+  color: white;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 100px;
+  justify-content: space-between;
+`;
+
 const LeftFooter = styled.div`
-  padding: 25px;
-  /* height:150px;
-    width:500px; */
-  height: auto;
-  width: 800px;
-  /* background-color: red; */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  width: 500px;
 `;
-const Logo = styled.div``;
+
+const CenterFooter = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  width: 300px;
+
+  font-size: 1rem;
+  font-weight: 400;
+  h5 {
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 2rem;
+  }
+  hr {
+    width: 100%;
+    border-top: 0.1px solid #eee;
+    margin: 20px 0px;
+  }
+`;
+
+const FooterLink = styled(Link)`
+  text-decoration: none;
+  font-family: "Poppins";
+  font-size: 1rem;
+  color: inherit;
+`;
+
+const RightFooter = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 400px;
+
+  font-size: 1rem;
+  font-weight: 400;
+  h5 {
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 2rem;
+  }
+  p {
+    font-family: "Poppins";
+  }
+`;
+
 const ImgLogo = styled.img`
   width: 100px;
   height: 50px;
-  border: 35px solid black;
-  box-shadow: 1px 3px 15px #f3f2f2;
 `;
 const About = styled.div`
-  padding: 20px 0px;
+  font-size: 1rem;
+  font-weight: 400;
+  h5 {
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 2rem;
+  }
+  p {
+    font-family: "Poppins";
+  }
 `;
-const CenterFooter = styled.div`
-  /* background-color: red; */
-`;
+
 const LogoDiv = styled.div`
   display: flex;
   gap: 20px;
+  margin-bottom: 20px;
 `;
+
 const SocialLogo = styled.div`
   display: flex;
   height: 25px;
   width: 25px;
-  gap: 20px;
-  padding: 10px 0px;
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
   &:hover {
     filter: grayscale(0%);
   }
 `;
-const LogoFooter = styled.a`
-  display: flex;
-`;
+
+const LogoFooter = styled.a``;
+
 const SocialImg = styled.img`
   height: 25px;
   width: 25px;
 `;
-const Connect = styled.div``;
-const RightFooter = styled.div``;
-const EndFooter = styled.div`
-  background-color: black;
-  padding: 1px 35px 35px 35px;
-`;
 
 export default function Footer() {
   return (
-    <FooterStyle>
+    <FooterContainer>
       <FooterPart>
         <LeftFooter>
-          <Logo>
+          <div>
             <ImgLogo src="/readonrentlogo.png" alt="" />
-          </Logo>
+          </div>
           <About>
-            <b>About Us</b>
+            <h5>About Us</h5>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos vel
               sint minus quasi placeat ipsam accusamus, quae quibusdam at
@@ -87,50 +149,43 @@ export default function Footer() {
         </LeftFooter>
 
         <CenterFooter>
-          <Connect>
-            <b>Follow us</b>
-            <LogoDiv>
-              <SocialLogo>
-                <LogoFooter href="facebook.com">
-                  <SocialImg src="/FacebookLogo.png" />
-                </LogoFooter>
-              </SocialLogo>
-              <SocialLogo>
-                <LogoFooter href="instagram.com">
-                  <SocialImg src="/InstagramLogo.png" />
-                </LogoFooter>
-              </SocialLogo>
-              <SocialLogo>
-                <LogoFooter href="twitter.com">
-                  <SocialImg src="/TwitterLogo.png" />
-                </LogoFooter>
-              </SocialLogo>
-              <SocialLogo>
-                <LogoFooter href="threads.com">
-                  <SocialImg src="/ThreadsLogo.png" />
-                </LogoFooter>
-              </SocialLogo>
-            </LogoDiv>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero
-              officia quo optio aspernatur, deleniti, odit neque reiciendis ipsa
-              repellendus eius ab iste accusantium in maxime!
-            </p>
-          </Connect>
+          <h5>Follow us</h5>
+          <LogoDiv>
+            <SocialLogo>
+              <LogoFooter href="facebook.com">
+                <SocialImg src="/FacebookLogo.png" />
+              </LogoFooter>
+            </SocialLogo>
+            <SocialLogo>
+              <LogoFooter href="instagram.com">
+                <SocialImg src="/InstagramLogo.png" />
+              </LogoFooter>
+            </SocialLogo>
+            <SocialLogo>
+              <LogoFooter href="twitter.com">
+                <SocialImg src="/TwitterLogo.png" />
+              </LogoFooter>
+            </SocialLogo>
+            <SocialLogo>
+              <LogoFooter href="threads.com">
+                <SocialImg src="/ThreadsLogo.png" />
+              </LogoFooter>
+            </SocialLogo>
+          </LogoDiv>
+          <hr />
+          <FooterLink href={"#"}>Return and Cancellation</FooterLink>
+          <FooterLink href={"#"}>FAQs</FooterLink>
+          <FooterLink href={"#"}>Terms and Conditions</FooterLink>
+          <FooterLink href={"#"}>Privacy Policy</FooterLink>
         </CenterFooter>
 
         <RightFooter>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis,
-            fugit, commodi eum enim optio molestiae nihil doloribus sint libero
-            neque tempora pariatur reprehenderit. Molestias, illo?
-          </p>
+          <FooterLink href={"#"}>Contact Us</FooterLink>
+          <FooterLink href={"#"}>WhatsApp</FooterLink>
         </RightFooter>
       </FooterPart>
-
-      <EndFooter>
-        <hr />
-      </EndFooter>
-    </FooterStyle>
+      <hr />
+      <p>Copyright © 2023 by Read on Rent</p>
+    </FooterContainer>
   );
 }
