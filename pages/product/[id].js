@@ -1,5 +1,5 @@
 import Header from "@/components/Header";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 import WhiteBox from "@/components/WhiteBox";
@@ -7,6 +7,8 @@ import styled from "styled-components";
 import ProductImage from "@/components/ProductImages";
 import Button from "@/components/Button";
 import { CartContext } from "@/components/CartContext";
+import axios from "axios";
+import { RENT_ORDER_STATUS } from "@/components/data/Constants";
 
 const ProductContainer = styled.div`
   display: flex;
@@ -70,8 +72,25 @@ const DiscountedPrice = styled.h5`
   font-family: "Poppins";
 `;
 
+const Box = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+
 export default function ProductPage({ product }) {
   const { addProduct } = useContext(CartContext);
+  const [inquiry, setInquiry] = useState(false);
+
+  const checkOrderForRent = async () => {
+    const user = await axios.get("/api/session");
+    await axios.post("/api/orders/add", {
+      productId: product._id,
+      isRentOrder: true,
+      status: RENT_ORDER_STATUS.INQUIRY,
+      userEmail: user.data.user.email,
+    });
+    setInquiry(true);
+  };
 
   return (
     <>
@@ -87,7 +106,6 @@ export default function ProductPage({ product }) {
           </CategoryBox>
           <p>{product.summary}</p>
           <p>Language : {product.languages}</p>
-          <div>{product.subCategory}</div>
 
           <PriceRow>
             <Price>₹ {product.price}</Price>
@@ -95,11 +113,16 @@ export default function ProductPage({ product }) {
               ₹ {product.price - (product.price * product.discount) / 100}
             </DiscountedPrice>
           </PriceRow>
-          <div>
+          <Box>
             <Button primary={1} onClick={() => addProduct(product._id)}>
               Add to cart
             </Button>
-          </div>
+            {!inquiry && (
+              <Button primary={1} onClick={checkOrderForRent}>
+                Check for Rent
+              </Button>
+            )}
+          </Box>
         </InfoContainer>
       </ProductContainer>
     </>

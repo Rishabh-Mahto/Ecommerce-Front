@@ -4,73 +4,112 @@ import { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import Table from "@/components/Table";
-import Input from "@/components/Input";
-import WhiteBox from "@/components/WhiteBox";
-import Button from "@/components/Button";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
+import OrderInformation from "@/components/OrderInformation";
 
 const PageContainer = styled.div`
   background-color: #f5f5f5;
-  /* padding: 0 50px 20px 50px; */
 `;
+
 const ColumnWrapper = styled.div`
   display: flex;
-  flex: 60%;
   align-items: flex-start;
-  margin-top: 40px;
-  padding: 60px;
-  gap: 40px;
+  justify-content: center;
 
   @media (max-width: 768px) {
     flex-direction: column;
-    align-items: center;
-    padding: 40px;
-    gap: 20px;
   }
 `;
+
 const CartWrapper = styled.div`
-  flex: 80%;
+  h2 {
+    font-family: "Poppins";
+    font-size: 3rem;
+  }
 `;
 
 const ProductInfoCell = styled.td`
   padding: 10px 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  width: 600px;
 `;
+
 const ProductImageBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 75px;
   height: 80px;
-  padding: 5px;
-  background-color: #f0f0f0;
-  img {
+  margin-right: 12px;
+`;
+
+const TextBox = styled.div`
+  h1 {
+    font-family: "Poppins";
+    font-size: 1.8rem;
   }
 `;
 
 const QuantityLabel = styled.span`
-  padding: 3px 7px;
-  border: 1.5px solid #ccc;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 4px 8px;
+  margin: 0 10px;
+  font-family: "Poppins";
+  font-size: 1.5rem;
 `;
-const CityHolder = styled.div`
+
+const ChangeButton = styled.button`
+  width: 24px;
+  height: 24px;
+  font-size: 1rem;
+  font-family: "Poppins";
+  font-weight: 400;
+  background-color: white;
+  border-radius: 4px;
+  border: 0.1px solid #98aac4;
   display: flex;
-  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`;
+
+const CategoryBox = styled.div`
+  display: flex;
+  gap: 8px;
+
+  h2 {
+    font-family: "Poppins";
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    background: #e1eeff;
+    padding: 4px 8px;
+    border-radius: 8px;
+  }
+`;
+
+const Price = styled.p`
+  font-family: "Poppins";
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #475569;
 `;
 
 export default function CartPage() {
   const { cartProducts, addProduct, removeProduct } = useContext(CartContext);
   const [products, setProducts] = useState([]);
+  const [user, setUser] = useState(null);
   const { data } = useSession();
-  const [name, setName] = useState(data?.user.name || "");
-  const [email, setEmail] = useState(data?.user.email || "");
-  const [streetAddress, setStreetAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [postalCode, setPostalCode] = useState("");
-  const [state, setState] = useState("");
-  const [country, setCountry] = useState("");
+
+  const fetchUser = async () => {
+    const _user = await axios.post("/api/user", { email: data?.user?.email });
+    setUser(_user.data);
+  };
 
   useEffect(() => {
+    data && fetchUser();
     if (cartProducts.length > 0) {
       axios.post("/api/cart", { ids: cartProducts }).then((response) => {
         setProducts(response.data);
@@ -78,142 +117,102 @@ export default function CartPage() {
     } else {
       setProducts([]);
     }
-  }, [cartProducts]);
+  }, [cartProducts, data]);
 
   function moreOfThisProduct(id) {
     addProduct(id);
   }
+
   function lessOfThisProduct(id) {
     removeProduct(id);
   }
+
   let total = 0;
+
   for (const productId of cartProducts) {
     const price = products.find((p) => p._id === productId)?.price || 0;
     total += price;
   }
+
   return (
     <PageContainer>
       <Header />
       <ColumnWrapper>
         <CartWrapper>
-          <WhiteBox>
-            <h2>Cart</h2>
-            {!cartProducts?.length && <div>Your Cart is empty</div>}
+          <h2>Cart</h2>
+          {!cartProducts?.length && <div>Your Cart is empty</div>}
 
-            {products?.length > 0 && (
-              <Table>
-                <thead>
-                  <th>Product</th>
-                  <th>Quantity</th>
-                  <th>Price</th>
-                </thead>
-                <tbody>
-                  {products.map((product) => (
-                    <tr>
-                      <ProductInfoCell>
-                        <ProductImageBox>
-                          <img src={product.images[0]} alt="" />
-                        </ProductImageBox>
-                        {product.title}
-                      </ProductInfoCell>
+          {products?.length > 0 && (
+            <Table>
+              <thead>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+              </thead>
+              <tbody>
+                {products.map((product) => (
+                  <tr>
+                    <ProductInfoCell>
+                      <ProductImageBox>
+                        <Image
+                          src={product.images[0][0]}
+                          width={80}
+                          height={75}
+                          alt=""
+                        />
+                      </ProductImageBox>
+                      <TextBox>
+                        <h1>{product.title}</h1>
+                        <CategoryBox>
+                          {product.category.map((el) => (
+                            <h2>{el}</h2>
+                          ))}
+                        </CategoryBox>
+                      </TextBox>
+                    </ProductInfoCell>
 
-                      <td>
-                        <button onClick={() => lessOfThisProduct(product._id)}>
-                          -
-                        </button>
-                        <QuantityLabel>
-                          {
-                            cartProducts.filter((id) => id === product._id)
-                              .length
-                          }
-                        </QuantityLabel>
-                        <button onClick={() => moreOfThisProduct(product._id)}>
-                          +
-                        </button>
-                      </td>
-                      <td>
+                    <td>
+                      <ChangeButton
+                        onClick={() => lessOfThisProduct(product._id)}
+                      >
+                        -
+                      </ChangeButton>
+                      <QuantityLabel>
+                        {cartProducts.filter((id) => id === product._id).length}
+                      </QuantityLabel>
+                      <ChangeButton
+                        onClick={() => moreOfThisProduct(product._id)}
+                      >
+                        +
+                      </ChangeButton>
+                    </td>
+                    <td>
+                      <Price>
                         ₹
                         {cartProducts.filter((id) => id === product._id)
                           .length * product.price}
-                      </td>
-                    </tr>
-                  ))}
-                  <hr />
-                  <tr>
-                    <td></td>
-                    <td>Total to Pay</td>
-                    <td>₹{total}</td>
+                      </Price>
+                    </td>
                   </tr>
-                </tbody>
-              </Table>
-            )}
-          </WhiteBox>
+                ))}
+                <hr />
+                <tr>
+                  <td />
+                  <td>
+                    <Price>₹{total}</Price>
+                  </td>
+                </tr>
+                <tr>
+                  <td />
+                  <td>
+                    <p>₹ 40 will be added for cart value less than ₹500</p>
+                  </td>
+                </tr>
+              </tbody>
+            </Table>
+          )}
         </CartWrapper>
-
-        {cartProducts?.length && (
-          <WhiteBox>
-            <h2>Order Information</h2>
-            <form method="post" action="/api/checkout">
-              <Input
-                type="text"
-                placeholder="Name"
-                value={name}
-                name="name"
-                onChange={(ev) => setName(ev.target.value)}
-              />
-              <Input
-                type="text"
-                placeholder="Email"
-                value={email}
-                name="email"
-                onChange={(ev) => setEmail(ev.target.value)}
-              />
-              <CityHolder>
-                <Input
-                  type="text"
-                  placeholder="City"
-                  value={city}
-                  name="city"
-                  onChange={(ev) => setCity(ev.target.value)}
-                />
-                <Input
-                  type="text"
-                  placeholder="Postal code"
-                  value={postalCode}
-                  name="postalCode"
-                  onChange={(ev) => setPostalCode(ev.target.value)}
-                />
-              </CityHolder>
-              <Input
-                type="text"
-                placeholder="street address"
-                value={streetAddress}
-                name="streetAddress"
-                onChange={(ev) => setStreetAddress(ev.target.value)}
-              />
-              <CityHolder>
-                <Input
-                  type="text"
-                  placeholder="State"
-                  value={state}
-                  name="state"
-                  onChange={(ev) => setState(ev.target.value)}
-                />
-                <Input
-                  type="text"
-                  placeholder="Country"
-                  value={country}
-                  name="country"
-                  onChange={(ev) => setCountry(ev.target.value)}
-                />
-              </CityHolder>
-
-              <Button type="submit" secondary={1}>
-                Continue to Payment
-              </Button>
-            </form>
-          </WhiteBox>
-        )}
+        <OrderInformation user={user} price={total} cart={cartProducts} />
       </ColumnWrapper>
     </PageContainer>
   );

@@ -57,10 +57,12 @@ export default function AccountPage() {
   console.log({ data, status });
 
   const fetchUser = async () => {
-    axios.post("/api/user", { email: data?.user?.email }).then((response) => {
-      console.log(response.data);
-      setUser(response.data);
-    });
+    await axios
+      .post("/api/user", { email: data?.user?.email })
+      .then((response) => {
+        console.log(response.data);
+        setUser(response.data);
+      });
   };
 
   useEffect(() => {

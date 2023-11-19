@@ -1,6 +1,6 @@
-import mongoose, { model, models, Schema } from "mongoose";
+import { model, models, Schema } from "mongoose";
 
-const AddressSchema = new Schema({
+export const AddressSchema = new Schema({
   city: String,
   postalCode: String,
   streetAddress: String,
