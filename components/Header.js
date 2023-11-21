@@ -8,7 +8,7 @@ import BarsIcon from "./icons/Bars";
 import Search from "./icons/Search";
 
 const StyledHeader = styled.header`
-  background-color: #f5f5f5;
+  background-color: #e8e8e6;
   padding: 0 60px;
 `;
 
@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 5px 0;
-  background-color: #f5f5f5;
+  background-color: #e8e8e6;
   @media screen and (max-width: 768px) {
     flex-direction: column;
     position: static;

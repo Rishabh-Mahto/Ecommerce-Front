@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { useContext } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { CartContext } from "./CartContext";
 import { MembershipData } from "./data/MembershipData";
 import Button from "./Button";
@@ -15,11 +13,11 @@ const MembershipContainer = styled.div`
   padding: 0 100px;
   width: 100%;
   margin: 40px 0;
-
   h1 {
     font-family: "Poppins";
     font-size: 3rem;
     color: #475569;
+    padding-top: 50px;
     margin-bottom: 20px;
     text-transform: capitalize;
   }
@@ -27,6 +25,7 @@ const MembershipContainer = styled.div`
 
 const MembershipCardContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 30px;

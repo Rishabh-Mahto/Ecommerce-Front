@@ -1,15 +1,11 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useRef, useEffect, useState, useContext } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import Button from "./Button";
 import ButtonLink from "./ButtonLink";
-import { CartContext } from "./CartContext";
 
 const Slider = styled.div`
   margin: 0 auto;
-  width: 57%;
+  width: 60%;
 `;
 
 const Carousel = styled(motion.div)`
@@ -24,12 +20,16 @@ const InnerCarousel = styled(motion.div)`
 `;
 
 const CarouselItems = styled(motion.div)`
-  min-height: 25rem;
-  min-width: 20rem;
+  min-height: 22rem;
+  min-width: 19rem;
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (max-width: 768px) {
+    min-width: 100%;
+    padding: 10px;
+  }
 `;
 
 const BtnDesign = styled.div`

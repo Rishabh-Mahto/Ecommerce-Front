@@ -4,12 +4,16 @@ import { EventsImages } from "./data/EventsImages";
 
 const Box = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  @media (max-width: 768px) {
+  }
 `;
 
 const EventWrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   width: 90%;
   height: 500px;
   background-color: #e1eeff;
@@ -18,12 +22,19 @@ const EventWrapper = styled.div`
   align-items: center;
   padding-left: 100px;
   transform: skew(-2.5deg);
+  @media (max-width: 768px) {
+    gap: 40px;
+    height: 100%;
+  }
 `;
 
 const ImageContainer = styled.div`
   width: 700px;
   height: 380px;
   margin-right: 50px;
+  @media (max-width: 768px) {
+    padding-top: 40px;
+  }
 `;
 
 const TextContainer = styled.div`
@@ -33,7 +44,7 @@ const TextContainer = styled.div`
 
   h1 {
     font-family: "Poppins";
-    font-size: 3rem;
+    font-size: 2.7rem;
     line-height: 2.8rem;
   }
 
@@ -41,6 +52,8 @@ const TextContainer = styled.div`
     font-family: "Poppins";
     margin-top: 20px;
     font-size: 1.2rem;
+  }
+  @media (max-width: 768px) {
   }
 `;
 

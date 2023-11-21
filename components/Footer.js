@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const FooterContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   background-color: #242526;
   align-items: center;
   justify-content: center;
@@ -21,6 +22,10 @@ const FooterContainer = styled.div`
     font-size: 0.8rem;
     color: #eee;
   }
+  @media (max-width: 768px) {
+    flex-direction: row;
+    height: 100%;
+  }
 `;
 
 const FooterPart = styled.div`
@@ -30,6 +35,11 @@ const FooterPart = styled.div`
   width: 100%;
   padding: 0 100px;
   justify-content: space-between;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+  }
 `;
 
 const LeftFooter = styled.div`
@@ -37,7 +47,10 @@ const LeftFooter = styled.div`
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  width: 500px;
+  max-width: 500px;
+  @media (max-width: 768) {
+    min-width: 300px;
+  }
 `;
 
 const CenterFooter = styled.div`
@@ -73,7 +86,7 @@ const RightFooter = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 400px;
+  max-width: 400px;
 
   font-size: 1rem;
   font-weight: 400;
