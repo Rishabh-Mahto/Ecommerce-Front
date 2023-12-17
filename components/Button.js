@@ -31,6 +31,21 @@ export const ButtonStyle = css`
     `}
 
   ${(props) =>
+    props.tertiary &&
+    css`
+      background-color: #d87a7a;
+      border: none;
+      padding: 10px 20px;
+      transition: all 0.1s ease-in-out;
+      font-family: "Poppins";
+      color: white;
+      font-weight: 400;
+      &:hover {
+        background-color: #a25c5c;
+      }
+    `}
+
+  ${(props) =>
     props.primary &&
     css`
       background-color: red;

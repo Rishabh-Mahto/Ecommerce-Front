@@ -20,8 +20,8 @@ const InnerCarousel = styled(motion.div)`
 `;
 
 const CarouselItems = styled(motion.div)`
-  min-height: 22rem;
-  min-width: 19rem;
+  min-height: 24rem;
+  min-width: 20rem;
   padding: 20px;
   display: flex;
   flex-direction: column;

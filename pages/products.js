@@ -6,9 +6,10 @@ import ProductsGrid from "@/components/ProductsGrid";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Footer from "@/components/Footer";
 
 const Wrapper = styled.div`
-  margin: 0 60px;
+  margin: 0 22px;
 `;
 
 const Title = styled.div`
@@ -50,6 +51,7 @@ export default function ProductsPage({ products }) {
           </ProdutctCol>
         </Center>
       </Wrapper>
+      <Footer />
     </>
   );
 }

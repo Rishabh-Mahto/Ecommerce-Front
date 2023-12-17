@@ -1,5 +1,6 @@
 import { CartContext } from "@/components/CartContext";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
@@ -16,9 +17,9 @@ const ColumnWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: center;
-
   @media (max-width: 768px) {
     flex-direction: column;
+    padding: 10px;
   }
 `;
 
@@ -33,8 +34,13 @@ const ProductInfoCell = styled.td`
   padding: 10px 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   width: 600px;
+  @media (max-width: 786px) {
+    /* flex-direction: column; */
+    width: 150px;
+  }
 `;
 
 const ProductImageBox = styled.div`
@@ -44,12 +50,15 @@ const ProductImageBox = styled.div`
   width: 75px;
   height: 80px;
   margin-right: 12px;
+  @media (max-width: 768px) {
+    /* margin: 0; */
+  }
 `;
 
 const TextBox = styled.div`
   h1 {
     font-family: "Poppins";
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 `;
 
@@ -77,7 +86,7 @@ const ChangeButton = styled.button`
 
 const CategoryBox = styled.div`
   display: flex;
-  gap: 8px;
+  gap: 4px;
 
   h2 {
     font-family: "Poppins";
@@ -214,6 +223,7 @@ export default function CartPage() {
         </CartWrapper>
         <OrderInformation user={user} price={total} cart={cartProducts} />
       </ColumnWrapper>
+      <Footer />
     </PageContainer>
   );
 }

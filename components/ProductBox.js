@@ -12,33 +12,13 @@ const ProductWrapper = styled.div`
   border-radius: 8px;
   height: 350px;
   width: 280px;
+  margin: 0 0 0 23px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: "Poppins";
   padding: 1rem;
-`;
-
-const WhiteBox = styled(Link)`
-  background-color: #fff;
-  padding: 10px 20px;
-  height: 210px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #f5f5f5;
-  }
-
-  img {
-    max-width: 190px;
-    max-height: 230px;
-  }
 `;
 
 const Title = styled(Link)`

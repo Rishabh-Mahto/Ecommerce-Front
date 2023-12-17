@@ -186,10 +186,14 @@ export default function Footer() {
             </SocialLogo>
           </LogoDiv>
           <hr />
-          <FooterLink href={"#"}>Return and Cancellation</FooterLink>
-          <FooterLink href={"#"}>FAQs</FooterLink>
-          <FooterLink href={"#"}>Terms and Conditions</FooterLink>
-          <FooterLink href={"#"}>Privacy Policy</FooterLink>
+          <FooterLink href={"/cancellation"}>
+            Return and Cancellation
+          </FooterLink>
+          <FooterLink href={"/faq"}>FAQs</FooterLink>
+          <FooterLink href={"/terms&conditions"}>
+            Terms and Conditions
+          </FooterLink>
+          <FooterLink href={"/privacypolicy"}>Privacy Policy</FooterLink>
         </CenterFooter>
 
         <RightFooter>

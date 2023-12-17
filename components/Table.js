@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 const StyledTable = styled.table`
-  width: fit-content;
-  width: 900px;
   background-color: #fff;
   margin-top: 20px;
   font-family: "Poppins";
@@ -11,17 +9,23 @@ const StyledTable = styled.table`
   padding: 20px;
   display: flex;
   flex-direction: column;
+  @media (max-width: 768px) {
+    width: 400px;
+  }
 
   thead {
     color: #787474;
     display: flex;
     justify-content: space-between;
-
+    @media (max-width: 768px) {
+    }
     th {
       text-align: left;
       font-family: "Poppins";
-      padding: 12px;
-
+      padding: 12px 30px;
+      flex-wrap: wrap;
+      @media (max-width: 768px) {
+      }
       &:first-child {
         width: 600px;
       }
@@ -32,6 +36,8 @@ const StyledTable = styled.table`
     tr {
       display: flex;
       justify-content: space-between;
+      @media (max-width: 768px) {
+      }
       td {
         padding: 19px;
         color: #333;

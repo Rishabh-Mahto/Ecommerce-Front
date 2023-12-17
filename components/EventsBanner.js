@@ -4,16 +4,15 @@ import { EventsImages } from "./data/EventsImages";
 
 const Box = styled.div`
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   @media (max-width: 768px) {
+    flex-direction: column;
   }
 `;
 
 const EventWrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
   width: 90%;
   height: 500px;
   background-color: #e1eeff;
@@ -25,6 +24,8 @@ const EventWrapper = styled.div`
   @media (max-width: 768px) {
     gap: 40px;
     height: 100%;
+    flex-direction: column;
+    padding-left: 0px;
   }
 `;
 
@@ -34,6 +35,8 @@ const ImageContainer = styled.div`
   margin-right: 50px;
   @media (max-width: 768px) {
     padding-top: 40px;
+    width: 80%;
+    margin-right: 10px;
   }
 `;
 
@@ -54,6 +57,13 @@ const TextContainer = styled.div`
     font-size: 1.2rem;
   }
   @media (max-width: 768px) {
+    width: 80%;
+    h1 {
+      font-size: 2.1rem;
+    }
+    p {
+      font-size: 1rem;
+    }
   }
 `;
 

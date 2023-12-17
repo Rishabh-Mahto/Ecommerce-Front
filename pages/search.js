@@ -8,7 +8,7 @@ import debounce from "lodash/debounce";
 import Spinner from "@/components/Spinner";
 
 const Wrapper = styled.div`
-  padding: 40px;
+  padding: 20px;
 `;
 const SearchInput = styled(Input)`
   padding: 5px 10px;
@@ -18,7 +18,7 @@ const SearchInput = styled(Input)`
 const InputWrapper = styled.div`
   position: sticky;
   top: 20px;
-  margin: 25px 0;
+  margin: 17px 0;
   padding: 5px 0;
   background-color: #eeeeeeaa;
 `;

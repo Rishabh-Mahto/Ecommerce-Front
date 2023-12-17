@@ -88,8 +88,8 @@ const AddressInput = ({ email }) => {
       />
       {error && <p>{error}</p>}
       <Button
-        primary={1}
-        style={{ padding: "4px 8px", fontSize: "12px", width: "fit-content" }}
+        secondary={1}
+        style={{ padding: "8px 8px", fontSize: "12px", width: "fit-content" }}
         onClick={handleAddAddress}
       >
         Add Address
@@ -160,12 +160,15 @@ function OrderInformation({ user, price, cart }) {
                   value={phone}
                   onChange={handlePhoneChange}
                   placeholder="Enter 10 Digit Mobile Number"
-                  style={{ width: "250px" }}
+                  style={{
+                    WebkitAppearance: "textfield",
+                    width: "250px",
+                  }}
                 />
                 {error && <p>{error}</p>}
                 <Button
-                  primary={1}
-                  style={{ padding: "4px 8px", fontSize: "12px" }}
+                  tertiary={1}
+                  style={{ padding: "8px 8px", fontSize: "13px" }}
                   onClick={handleAddPhone}
                 >
                   Add Phone Number
@@ -188,9 +191,9 @@ function OrderInformation({ user, price, cart }) {
                 >{`${el.streetAddress}, ${el.city}, ${el.state}, ${el.postalCode}`}</AddressOption>
               ))}
               <Button
-                primary={1}
+                secondary={1}
                 style={{
-                  padding: "4px 8px",
+                  padding: "8px 8px",
                   fontSize: "12px",
                   width: "fit-content",
                 }}
@@ -204,7 +207,7 @@ function OrderInformation({ user, price, cart }) {
       )}
       <Button
         onClick={handleCreateOrder}
-        primary={1}
+        tertiary={1}
         style={{ width: "fit-content", marginTop: "20px" }}
       >
         CONTINUE TO PAYMENT
@@ -216,7 +219,7 @@ function OrderInformation({ user, price, cart }) {
 const OrderContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 50px;
   width: 450px;
   height: fit-content;
   min-height: 400px;
@@ -224,7 +227,10 @@ const OrderContainer = styled.div`
   border: 1px solid #475569;
   border-radius: 8px;
   background-color: white;
-
+  @media (max-width: 768px) {
+    margin: 95px 0px;
+    width: 370px;
+  }
   h1 {
     font-family: "Poppins";
     font-size: 1.5rem;
@@ -235,6 +241,7 @@ const OrderContainer = styled.div`
 const UserBox = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 12px 0;
 `;
 
 const UserInfo = styled.div`
@@ -264,6 +271,7 @@ const UserInfo = styled.div`
 const FlexBox = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 5px;
   margin-top: 20px;
 `;
 
@@ -272,7 +280,8 @@ const PhoneBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  gap: 5px;
+  margin: 10px 0;
 `;
 
 const AddressList = styled.div`
@@ -280,7 +289,6 @@ const AddressList = styled.div`
   flex-direction: column;
   margin-top: 20px;
   gap: 10px;
-
   h3 {
     font-size: 1.2rem;
     font-family: "Poppins";

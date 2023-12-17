@@ -5,19 +5,15 @@ import WhiteBox from "@/components/WhiteBox";
 import { useEffect, useState } from "react";
 import Input from "@/components/Input";
 import axios from "axios";
-import Spinner from "@/components/Spinner";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
-import { mongooseConnect } from "@/lib/mongoose";
-import { User } from "@/models/User";
 import dayjs from "dayjs";
+import Footer from "@/components/Footer";
 
 const StyleAcoount = styled.div`
   background-color: #f5f5f5;
 `;
 const Wrapper = styled.div`
   padding: 30px;
-  /* padding-bottom: 400px; */
 `;
 const ColsWrapper = styled.div`
   display: flex;
@@ -31,12 +27,15 @@ const ColsWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 40px;
-    gap: 20px;
+    gap: 80px;
   }
 `;
 const WishWrapper = styled.div`
   flex: 80%;
   padding-right: 200px;
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 `;
 const CityHolder = styled.div`
   display: flex;
@@ -68,18 +67,6 @@ export default function AccountPage() {
   useEffect(() => {
     fetchUser();
   }, [status]);
-
-  function saveAddress() {
-    // const data = {
-    //   name,
-    //   email,
-    //   city,
-    //   postalCode,
-    //   streetAddress,
-    //   state,
-    //   country,
-    // };
-  }
 
   return (
     <StyleAcoount>
@@ -179,6 +166,7 @@ export default function AccountPage() {
           </div>
         </ColsWrapper>
       </Wrapper>
+      <Footer />
     </StyleAcoount>
   );
 }

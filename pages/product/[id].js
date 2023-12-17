@@ -17,6 +17,10 @@ const ProductContainer = styled.div`
   width: 100%;
   padding: 0 200px;
   margin-top: 40px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 50px;
+  }
 `;
 
 const InfoContainer = styled.div`
@@ -25,6 +29,9 @@ const InfoContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   margin-left: 100px;
+  @media (max-width: 768px) {
+    margin-left: 7px;
+  }
 
   h1 {
     font-family: "Poppins";
@@ -114,11 +121,11 @@ export default function ProductPage({ product }) {
             </DiscountedPrice>
           </PriceRow>
           <Box>
-            <Button primary={1} onClick={() => addProduct(product._id)}>
+            <Button tertiary={1} onClick={() => addProduct(product._id)}>
               Add to cart
             </Button>
             {!inquiry && (
-              <Button primary={1} onClick={checkOrderForRent}>
+              <Button secondary={1} onClick={checkOrderForRent}>
                 Check for Rent
               </Button>
             )}
