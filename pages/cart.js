@@ -17,6 +17,7 @@ const ColumnWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  margin: 50px;
   @media (max-width: 768px) {
     flex-direction: column;
     padding: 10px;
@@ -221,7 +222,11 @@ export default function CartPage() {
             </Table>
           )}
         </CartWrapper>
-        <OrderInformation user={user} price={total} cart={cartProducts} />
+        <div>
+          {products?.length > 0 && (
+            <OrderInformation user={user} price={total} cart={cartProducts} />
+          )}
+        </div>
       </ColumnWrapper>
       <Footer />
     </PageContainer>

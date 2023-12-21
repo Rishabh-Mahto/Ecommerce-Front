@@ -77,10 +77,14 @@ export default function EventsBanner() {
         <TextContainer>
           <h1>Know About Events conducted by us</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
-            blanditiis, corporis soluta porro nam facere iusto ad molestiae,
-            repellat qui, accusantium laboriosam odio consequuntur sit
-            temporibus. Veniam architecto aut aperiam.
+            Step into our vibrant readers' community for engaging Sunday events
+            that foster personal and social development. Enjoy thought-provoking
+            reading sessions, insightful discussions, book swaps, content
+            creator meets, and meticulously organized book fairs. Our open mic
+            sessions provide a platform for expression. Join us for enriching
+            experiences that go beyond the pages, where learning, sharing, and
+            connecting thrive every week!
+            <br /> You can join our community
           </p>
         </TextContainer>
       </EventWrapper>

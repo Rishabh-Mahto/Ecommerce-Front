@@ -1,5 +1,11 @@
 import Link from "next/link";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faLocationDot,
+  faPhone,
+  faEnvelope,
+} from "@fortawesome/free-solid-svg-icons";
 
 const FooterContainer = styled.div`
   display: flex;
@@ -127,7 +133,7 @@ const SocialLogo = styled.div`
   display: flex;
   height: 25px;
   width: 25px;
-  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
   &:hover {
     filter: grayscale(0%);
@@ -152,11 +158,17 @@ export default function Footer() {
           <About>
             <h5>About Us</h5>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos vel
-              sint minus quasi placeat ipsam accusamus, quae quibusdam at
-              laborum. Ipsam ab reiciendis officiis animi dolores minima iusto
-              quam fugit veritatis, harum dolor maiores tempora incidunt libero
-              odio molestias error.
+              Welcome to our platform—a haven for lifelong learners! We get the
+              thrill of exploring books beyond coursework but understand the
+              financial constraints of being a student. That's why we offer a
+              budget-friendly solution.
+              <br />
+              <b>Our mission:</b> an affordable, accessible reading experience.
+              Dive into a diverse book collection for just Rs. 5 per day.
+              Knowledge shouldn't be restricted by budgets; we're here to
+              empower every learner. Whether you crave new horizons, subjects,
+              or the joy of reading, our platform caters to your curiosity. Join
+              us where the cost of knowledge is no barrier. Happy reading!
             </p>
           </About>
         </LeftFooter>
@@ -197,8 +209,31 @@ export default function Footer() {
         </CenterFooter>
 
         <RightFooter>
-          <FooterLink href={"#"}>Contact Us</FooterLink>
-          <FooterLink href={"#"}>WhatsApp</FooterLink>
+          <h3>Visit Us</h3>
+          <br />
+          <p>
+            <FontAwesomeIcon
+              icon={faLocationDot}
+              style={{ color: "#d5d6d8" }}
+            />
+            &nbsp; 602, First floor, main road, above jinendra peda, near kartik
+            hotel, Yadav Colony, Jabalpur, Madhya Pradesh 482002
+          </p>
+          <hr />
+          <FooterLink href={"#"}>
+            Contact Us
+            <div style={{ display: "flex" }}>
+              <FontAwesomeIcon icon={faPhone} style={{ color: "#dbdbdc" }} />
+              <p> +919156480564 </p>
+            </div>
+            <div style={{ display: "flex" }}>
+              <FontAwesomeIcon icon={faEnvelope} style={{ color: "#e0e0e0" }} />
+              <p>readonrent.in@gmail.com</p>
+            </div>
+          </FooterLink>
+          <FooterLink href={"https://chat.whatsapp.com/Kvh1fsDcL1GFCBrIveQ8q8"}>
+            WhatsApp
+          </FooterLink>
         </RightFooter>
       </FooterPart>
       <hr />

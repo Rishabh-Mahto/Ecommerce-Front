@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import Footer from "@/components/Footer";
 
 const Wrapper = styled.div`
-  margin: 0 22px;
+  margin: 0 22px 50px;
 `;
 
 const Title = styled.div`

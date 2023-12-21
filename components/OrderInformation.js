@@ -145,7 +145,9 @@ function OrderInformation({ user, price, cart }) {
     <OrderContainer>
       <h1>Order Details : </h1>
       {!user ? (
-        <Button>Login</Button>
+        <Button secondary={1} style={{ width: "fit-content" }}>
+          Login
+        </Button> // this is yet to be added
       ) : (
         <UserBox>
           <UserInfo>
@@ -203,15 +205,15 @@ function OrderInformation({ user, price, cart }) {
               </Button>
             </AddressList>
           )}
+          <Button
+            onClick={handleCreateOrder}
+            tertiary={1}
+            style={{ width: "fit-content", marginTop: "20px" }}
+          >
+            CONTINUE TO PAYMENT
+          </Button>
         </UserBox>
       )}
-      <Button
-        onClick={handleCreateOrder}
-        tertiary={1}
-        style={{ width: "fit-content", marginTop: "20px" }}
-      >
-        CONTINUE TO PAYMENT
-      </Button>
     </OrderContainer>
   );
 }
