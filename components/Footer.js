@@ -177,23 +177,27 @@ export default function Footer() {
           <h5>Follow us</h5>
           <LogoDiv>
             <SocialLogo>
-              <LogoFooter href="facebook.com">
-                <SocialImg src="/FacebookLogo.png" />
+              <LogoFooter
+                href="https://www.linkedin.com/company/read-on-rent/"
+                target="_blank"
+              >
+                <SocialImg src="/LinkedinLogo.png" />
               </LogoFooter>
             </SocialLogo>
             <SocialLogo>
-              <LogoFooter href="instagram.com">
+              <LogoFooter
+                href="https://www.instagram.com/readonrent.in/"
+                target="_blank"
+              >
                 <SocialImg src="/InstagramLogo.png" />
               </LogoFooter>
             </SocialLogo>
             <SocialLogo>
-              <LogoFooter href="twitter.com">
-                <SocialImg src="/TwitterLogo.png" />
-              </LogoFooter>
-            </SocialLogo>
-            <SocialLogo>
-              <LogoFooter href="threads.com">
-                <SocialImg src="/ThreadsLogo.png" />
+              <LogoFooter
+                href="https://youtube.com/@readonrent?si=wzI86Bb7Re_-0vk8"
+                target="_blank"
+              >
+                <SocialImg src="/youtubeLogo.png" />
               </LogoFooter>
             </SocialLogo>
           </LogoDiv>
@@ -220,20 +224,31 @@ export default function Footer() {
             hotel, Yadav Colony, Jabalpur, Madhya Pradesh 482002
           </p>
           <hr />
-          <FooterLink href={"#"}>
-            Contact Us
-            <div style={{ display: "flex" }}>
-              <FontAwesomeIcon icon={faPhone} style={{ color: "#dbdbdc" }} />
-              <p> +919156480564 </p>
-            </div>
-            <div style={{ display: "flex" }}>
-              <FontAwesomeIcon icon={faEnvelope} style={{ color: "#e0e0e0" }} />
-              <p>readonrent.in@gmail.com</p>
-            </div>
-          </FooterLink>
-          <FooterLink href={"https://chat.whatsapp.com/Kvh1fsDcL1GFCBrIveQ8q8"}>
-            WhatsApp
-          </FooterLink>
+          <div>
+            <FooterLink href={"#"} style={{ padding: "5px" }}>
+              Contact Us
+              <div style={{ display: "flex" }}>
+                <FontAwesomeIcon
+                  icon={faPhone}
+                  style={{ color: "#dbdbdc", marginRight: "8px" }}
+                />
+                <p> +919156480564 </p>
+              </div>
+              <div style={{ display: "flex" }}>
+                <FontAwesomeIcon
+                  icon={faEnvelope}
+                  style={{ color: "#e0e0e0", marginRight: "8px" }}
+                />
+
+                <p> readonrent.in@gmail.com</p>
+              </div>
+            </FooterLink>
+            <FooterLink
+              href={"https://chat.whatsapp.com/Kvh1fsDcL1GFCBrIveQ8q8"}
+            >
+              WhatsApp - Reader's Community
+            </FooterLink>
+          </div>
         </RightFooter>
       </FooterPart>
       <hr />

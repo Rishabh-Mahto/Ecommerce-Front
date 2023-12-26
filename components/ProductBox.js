@@ -10,23 +10,28 @@ import Image from "next/image";
 const ProductWrapper = styled.div`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  height: 350px;
-  width: 280px;
-  margin: 0 0 0 23px;
+  height: 320px;
+  width: 210px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: "Poppins";
-  padding: 1rem;
+  padding: 2.1rem;
+  @media (max-width: 768px) {
+    margin: 0px;
+    height: 300px;
+    width: 187px;
+    padding: 1.3rem;
+  }
 `;
 
 const Title = styled(Link)`
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #475569;
   text-decoration: none;
   font-weight: 600;
-  margin-top: 8px;
+  margin: 5px 0;
 `;
 
 const ProductInfoBox = styled.div`
@@ -39,6 +44,13 @@ const ProductInfoBox = styled.div`
 
 const Category = styled.p`
   font-weight: 500;
+  /* background: #e1eeff;
+  padding: 4px 12px;
+  border-radius: 8px;
+  @media (max-width: 768px) {
+    padding: 4px 4px;
+    border-radius: 6px;
+  } */
 `;
 
 const CategoryStyle = styled.div`
@@ -48,6 +60,10 @@ const CategoryStyle = styled.div`
   font-size: 0.9rem;
   gap: 0.5rem;
   color: #94a3b8;
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+    gap: 0.4rem;
+  }
 `;
 
 const PriceRow = styled.div`
@@ -104,7 +120,7 @@ export default function ProductBox({
   return (
     <ProductWrapper>
       <ProductInfoBox>
-        <Image src={images[0][0]} width={250} height={200} alt="" />
+        <Image src={images[0][0]} width={130} height={180} alt="" />
         <Title href={url}>{title}</Title>
       </ProductInfoBox>
 

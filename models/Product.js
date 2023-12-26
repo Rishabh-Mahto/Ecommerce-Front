@@ -15,4 +15,4 @@ const ProductSchema = new Schema({
   isMembership: { type: Boolean, default: false },
 });
 
-export const Product = models.Product || model("Product", ProductSchema);
+export const Product = models?.Product || model("Product", ProductSchema);

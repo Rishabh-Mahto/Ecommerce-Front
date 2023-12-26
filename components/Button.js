@@ -33,7 +33,7 @@ export const ButtonStyle = css`
   ${(props) =>
     props.tertiary &&
     css`
-      background-color: #d87a7a;
+      background-color: #e74c3c;
       border: none;
       padding: 10px 20px;
       transition: all 0.1s ease-in-out;
@@ -41,7 +41,7 @@ export const ButtonStyle = css`
       color: white;
       font-weight: 400;
       &:hover {
-        background-color: #a25c5c;
+        background-color: #c04133;
       }
     `}
 

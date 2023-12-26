@@ -230,7 +230,7 @@ const OrderContainer = styled.div`
   border-radius: 8px;
   background-color: white;
   @media (max-width: 768px) {
-    margin: 95px 0px;
+    margin: 95px 0px 95px 15px;
     width: 370px;
   }
   h1 {

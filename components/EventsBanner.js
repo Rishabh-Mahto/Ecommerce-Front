@@ -35,7 +35,8 @@ const ImageContainer = styled.div`
   margin-right: 50px;
   @media (max-width: 768px) {
     padding-top: 40px;
-    width: 80%;
+    height: 300px;
+    width: 85%;
     margin-right: 10px;
   }
 `;
@@ -56,12 +57,14 @@ const TextContainer = styled.div`
     margin-top: 20px;
     font-size: 1.2rem;
   }
-  @media (max-width: 768px) {
-    width: 80%;
+  @media (max-width: 1300px) {
+    width: 85%;
     h1 {
-      font-size: 2.1rem;
+      font-size: 1.9rem;
+      line-height: 2rem;
     }
     p {
+      margin-top: 10px;
       font-size: 1rem;
     }
   }
@@ -84,7 +87,6 @@ export default function EventsBanner() {
             sessions provide a platform for expression. Join us for enriching
             experiences that go beyond the pages, where learning, sharing, and
             connecting thrive every week!
-            <br /> You can join our community
           </p>
         </TextContainer>
       </EventWrapper>

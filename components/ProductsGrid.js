@@ -5,7 +5,9 @@ const StyledProductsGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 27px;
-  padding-top: 10px;
+  @media (max-width: 768px) {
+    gap: 1rem;
+  }
 `;
 
 export default function ProductsGrid({ products }) {

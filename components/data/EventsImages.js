@@ -1,7 +1,7 @@
 export const EventsImages = [
-  "event_img1.jpg",
-  "event_img2.jpg",
-  "event_img3.jpg",
-  "event_img4.jpg",
+  "event_img1.jpeg",
+  "event_img2.jpeg",
+  "event_img3.jpeg",
+  "event_img4.jpeg",
   "event_img5.jpg",
 ];

@@ -5,6 +5,7 @@ export const CategoryData = [
   "Romance",
   "Thriller",
   "Suspense",
+  "Spritual",
   "Fantasy",
   "Mythology",
   "Self Help",
@@ -18,5 +19,5 @@ export const CategoryData = [
   "Kids Books",
   "Autobiography",
   "Health",
-  "Mental Health",
+  "Fiction",
 ];

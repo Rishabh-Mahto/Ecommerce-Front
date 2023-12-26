@@ -20,7 +20,7 @@ const ColumnWrapper = styled.div`
   margin: 50px;
   @media (max-width: 768px) {
     flex-direction: column;
-    padding: 10px;
+    margin: 8px;
   }
 `;
 
@@ -39,7 +39,6 @@ const ProductInfoCell = styled.td`
   align-items: center;
   width: 600px;
   @media (max-width: 786px) {
-    /* flex-direction: column; */
     width: 150px;
   }
 `;
@@ -51,9 +50,6 @@ const ProductImageBox = styled.div`
   width: 75px;
   height: 80px;
   margin-right: 12px;
-  @media (max-width: 768px) {
-    /* margin: 0; */
-  }
 `;
 
 const TextBox = styled.div`
@@ -138,10 +134,14 @@ export default function CartPage() {
   }
 
   let total = 0;
-
   for (const productId of cartProducts) {
-    const price = products.find((p) => p._id === productId)?.price || 0;
-    total += price;
+    const product = products.find((p) => p._id === productId);
+    if (product) {
+      const discountedPrice =
+        product.price - (product.price * product.discount) / 100;
+      total +=
+        discountedPrice * cartProducts.filter((id) => id === productId).length;
+    }
   }
 
   return (
@@ -200,7 +200,9 @@ export default function CartPage() {
                       <Price>
                         ₹
                         {cartProducts.filter((id) => id === product._id)
-                          .length * product.price}
+                          .length *
+                          (product.price -
+                            (product.price * product.discount) / 100)}
                       </Price>
                     </td>
                   </tr>
@@ -215,7 +217,10 @@ export default function CartPage() {
                 <tr>
                   <td />
                   <td>
-                    <p>₹ 40 will be added for cart value less than ₹500</p>
+                    <p>
+                      <b>₹ 40</b> will be charged as <b>delivery</b> for cart
+                      value <b>less than ₹500</b>
+                    </p>
                   </td>
                 </tr>
               </tbody>

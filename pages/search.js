@@ -9,6 +9,9 @@ import Spinner from "@/components/Spinner";
 
 const Wrapper = styled.div`
   padding: 20px;
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
 `;
 const SearchInput = styled(Input)`
   padding: 5px 10px;

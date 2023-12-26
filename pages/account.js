@@ -8,38 +8,65 @@ import axios from "axios";
 import { signIn, signOut, useSession } from "next-auth/react";
 import dayjs from "dayjs";
 import Footer from "@/components/Footer";
+import { Order } from "@/models/Order";
 
 const StyleAcoount = styled.div`
   background-color: #f5f5f5;
 `;
-const Wrapper = styled.div`
-  padding: 30px;
-`;
+
 const ColsWrapper = styled.div`
   display: flex;
-  flex: 60%;
-  align-items: flex-start;
-  margin-top: 40px;
-  padding: 60px;
+  align-items: center;
+  justify-content: center;
+  margin: 40px;
   gap: 40px;
-
+  min-height: 400px;
   @media (max-width: 768px) {
     flex-direction: column;
-    align-items: center;
-    padding: 40px;
-    gap: 80px;
+    margin: 40px;
+    gap: 40px;
   }
 `;
-const WishWrapper = styled.div`
-  flex: 80%;
-  padding-right: 200px;
+
+const MembershipContainer = styled.div`
+  width: 60%;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 30px;
+
   @media (max-width: 768px) {
-    padding: 0;
+    width: 100%;
+    padding: 30px;
+  }
+`;
+
+const DetailsContainer = styled.div`
+  width: 30%;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 30px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 30px;
   }
 `;
 const CityHolder = styled.div`
   display: flex;
   gap: 5px;
+`;
+
+const UserDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 12px 0px 12px 0;
+
+  h3,
+  h4,
+  h5 {
+    font-weight: 500;
+  }
 `;
 
 export default function AccountPage() {
@@ -52,16 +79,19 @@ export default function AccountPage() {
   const [country, setCountry] = useState("");
   const [loaded, setLoaded] = useState(false);
   const [user, setUser] = useState(null);
+  const [orders, setOrders] = useState(null);
   const { data, status } = useSession();
-  console.log({ data, status });
 
   const fetchUser = async () => {
-    await axios
-      .post("/api/user", { email: data?.user?.email })
-      .then((response) => {
-        console.log(response.data);
-        setUser(response.data);
-      });
+    const User = await axios.post("/api/user", { email: data?.user?.email });
+    const Orders = await axios.get("/api/orders", {
+      params: {
+        email: User.data?.email,
+      },
+    });
+    setUser(User.data);
+    setOrders(Orders.data);
+    setLoaded(true);
   };
 
   useEffect(() => {
@@ -71,101 +101,50 @@ export default function AccountPage() {
   return (
     <StyleAcoount>
       <Header />
-      <Wrapper>
-        <ColsWrapper>
-          <WishWrapper>
-            <WhiteBox>
-              {user && (
-                <div>
-                  <h2>Account Membership</h2>
-                  <p>Membership: {user.isMembershipActive ? "Yes" : "No"}</p>
-                  <p>
-                    Active Until :
-                    {dayjs(user.membershipEndsOn).format("D MMMM YYYY")}
-                  </p>
-                </div>
-              )}
-            </WhiteBox>
-          </WishWrapper>
-          <div>
-            <WhiteBox>
-              <h2>Account Details</h2>
-              {loaded && (
-                <div>
-                  <Input
-                    type="text"
-                    placeholder="Name"
-                    value={name}
-                    name="name"
-                    onChange={(ev) => setName(ev.target.value)}
-                  />
-                  <Input
-                    type="text"
-                    placeholder="Email"
-                    value={email}
-                    name="email"
-                    onChange={(ev) => setEmail(ev.target.value)}
-                  />
-                  <CityHolder>
-                    <Input
-                      type="text"
-                      placeholder="City"
-                      value={city}
-                      name="city"
-                      onChange={(ev) => setCity(ev.target.value)}
-                    />
-                    <Input
-                      type="text"
-                      placeholder="Postal code"
-                      value={postalCode}
-                      name="postalCode"
-                      onChange={(ev) => setPostalCode(ev.target.value)}
-                    />
-                  </CityHolder>
-                  <Input
-                    type="text"
-                    placeholder="street address"
-                    value={streetAddress}
-                    name="streetAddress"
-                    onChange={(ev) => setStreetAddress(ev.target.value)}
-                  />
-                  <CityHolder>
-                    <Input
-                      type="text"
-                      placeholder="State"
-                      value={state}
-                      name="state"
-                      onChange={(ev) => setState(ev.target.value)}
-                    />
-                    <Input
-                      type="text"
-                      placeholder="Country"
-                      value={country}
-                      name="country"
-                      onChange={(ev) => setCountry(ev.target.value)}
-                    />
-                  </CityHolder>
+      <ColsWrapper>
+        <MembershipContainer>
+          {user && (
+            <div>
+              <h2>Account Membership</h2>
+              <p>
+                Membership:{" "}
+                {dayjs(user.membershipEndsOn).isAfter(dayjs()) ? "Yes" : "No"}
+              </p>
+              <p>
+                Latest Active Membership Date :
+                {dayjs(user.membershipEndsOn).format("D MMMM YYYY")}
+              </p>
+              {/* Show current and previous orders here using status */}
+            </div>
+          )}
+        </MembershipContainer>
+        <DetailsContainer>
+          <h2>Account Details</h2>
+          {loaded ? (
+            user ? (
+              <UserDetails onClick={() => console.log(user)}>
+                <h3>{user.name}</h3>
+                <h4>{user.email}</h4>
+                <h4>{user.phone}</h4>
+              </UserDetails>
+            ) : (
+              <div>
+                <p>Login Now!</p>
+              </div>
+            )
+          ) : null}
 
-                  <Button secondary={1} onClick={saveAddress}>
-                    Save
-                  </Button>
-                  <hr />
-                </div>
-              )}
-
-              {status === "authenticated" ? (
-                <Button secondary={1} onClick={() => signOut()}>
-                  Logout
-                </Button>
-              ) : (
-                <Button secondary={1} onClick={() => signIn("google")}>
-                  Login
-                </Button>
-              )}
-            </WhiteBox>
-          </div>
-        </ColsWrapper>
-      </Wrapper>
+          {status === "authenticated" ? (
+            <Button secondary={1} onClick={() => signOut()}>
+              Logout
+            </Button>
+          ) : (
+            <Button secondary={1} onClick={() => signIn("google")}>
+              Login
+            </Button>
+          )}
+        </DetailsContainer>
+      </ColsWrapper>
       <Footer />
     </StyleAcoount>
   );

@@ -5,6 +5,7 @@ const ImageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding: 1rem;
 `;
 const Image = styled.img`
   max-width: 100%;
@@ -12,9 +13,10 @@ const Image = styled.img`
 `;
 
 const BigImage = styled.img`
-  max-width: 100%;
-  max-height: 400px;
+  max-width: 250px;
+  max-height: 500px;
 `;
+
 const ImageButtons = styled.div`
   display: flex;
   gap: 10px;
@@ -31,7 +33,7 @@ const ImageButton = styled.div`
             border-color: Transparent;
             opacity: .7;
         `}
-  height: 80px;
+  height: 60px;
   padding: 3px;
   cursor: pointer;
   border-radius: 5px;

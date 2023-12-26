@@ -4,7 +4,6 @@ import Banner from "@/components/Banner";
 import Featured from "@/components/Featured";
 import Categories from "@/components/Categories";
 import EventsBanner from "@/components/EventsBanner";
-import Feedback from "@/components/Feedback";
 import Membership from "@/components/Membership";
 import NewsLetter from "@/components/NewsLetter";
 import Footer from "@/components/Footer";
@@ -15,7 +14,6 @@ const OverlapContainer = styled.div`
   position: relative;
   margin-top: -100px;
   z-index: 1;
-  display: flex;
 `;
 
 export default function HomePage({ firstImages }) {
@@ -28,7 +26,6 @@ export default function HomePage({ firstImages }) {
       </OverlapContainer>
       <Categories />
       <EventsBanner />
-      {/* <Feedback /> */}
       <Membership />
       <Footer />
     </div>
@@ -37,12 +34,12 @@ export default function HomePage({ firstImages }) {
 
 export async function getServerSideProps() {
   const featuredProductIds = [
-    "6550a2b1aca59a9178d58fb0",
-    "6550a22daca59a9178d58faa",
-    "6550a8380dbdbdd34ce640f6",
-    "6550a188aca59a9178d58f92",
-    "650b0ac560a575142105fd86",
-    "65204ee9d4c06c4e54535265",
+    "658ae6da0d120cd80f4b3471",
+    "658aec6b0d120cd80f4b349d",
+    "658aea290d120cd80f4b348c",
+    "658ae53a0d120cd80f4b3469",
+    "658aeb690d120cd80f4b3491",
+    "658ae7c60d120cd80f4b3479",
   ];
 
   await mongooseConnect();
