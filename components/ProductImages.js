@@ -50,7 +50,7 @@ export default function ProductImages({ images }) {
         <BigImage src={activeImage} />
       </BigImageWrapper>
       <ImageButtons>
-        {images.map((image) => (
+        {images.map((image, index) => (
           <ImageButton
             key={image}
             active={image === activeImage}
