@@ -160,15 +160,16 @@ export default function Footer() {
             <p>
               Welcome to our platform—a haven for lifelong learners! We get the
               thrill of exploring books beyond coursework but understand the
-              financial constraints of being a student. That's why we offer a
-              budget-friendly solution.
+              financial constraints of being a student. That&apos;s why we offer
+              a budget-friendly solution.
               <br />
               <b>Our mission:</b> an affordable, accessible reading experience.
               Dive into a diverse book collection for just Rs. 5 per day.
-              Knowledge shouldn't be restricted by budgets; we're here to
-              empower every learner. Whether you crave new horizons, subjects,
-              or the joy of reading, our platform caters to your curiosity. Join
-              us where the cost of knowledge is no barrier. Happy reading!
+              Knowledge shouldn&apos;t be restricted by budgets; we&apos;re here
+              to empower every learner. Whether you crave new horizons,
+              subjects, or the joy of reading, our platform caters to your
+              curiosity. Join us where the cost of knowledge is no barrier.
+              Happy reading!
             </p>
           </About>
         </LeftFooter>
@@ -246,7 +247,7 @@ export default function Footer() {
             <FooterLink
               href={"https://chat.whatsapp.com/Kvh1fsDcL1GFCBrIveQ8q8"}
             >
-              WhatsApp - Reader's Community
+              WhatsApp - Reader&apos;s Community
             </FooterLink>
           </div>
         </RightFooter>

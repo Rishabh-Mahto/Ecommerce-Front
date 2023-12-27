@@ -56,7 +56,7 @@ export default function ProductImages({ images }) {
             active={image === activeImage}
             onClick={() => setActiveImage(image)}
           >
-            <Image src={image} />
+            <Image src={image} alt={`Product Image ${index + 1}`} />
           </ImageButton>
         ))}
       </ImageButtons>

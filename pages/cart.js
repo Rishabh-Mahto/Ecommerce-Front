@@ -123,7 +123,7 @@ export default function CartPage() {
     } else {
       setProducts([]);
     }
-  }, [cartProducts, data]);
+  }, [cartProducts, data, fetchUser]);
 
   function moreOfThisProduct(id) {
     addProduct(id);
@@ -175,7 +175,7 @@ export default function CartPage() {
                         <h1>{product.title}</h1>
                         <CategoryBox>
                           {product.category.map((el) => (
-                            <h2>{el}</h2>
+                            <h2 key={el.id}>{el}</h2>
                           ))}
                         </CategoryBox>
                       </TextBox>
