@@ -108,7 +108,7 @@ export default function ProductPage({ product }) {
           <h1>{product.title}</h1>
           <CategoryBox>
             {product.category.map((el) => (
-              <h2>{el}</h2>
+              <h2 key={el.id}>{el}</h2>
             ))}
           </CategoryBox>
           <p>{product.summary}</p>

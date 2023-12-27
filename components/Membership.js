@@ -103,7 +103,7 @@ export default function Membership() {
       <h1>Get your Membership now</h1>
       <MembershipCardContainer>
         {MembershipData.map((data) => (
-          <MembershipCard>
+          <MembershipCard key={data.productId}>
             <h2>{data.name} Plan</h2>
             <h1>{data.numMonths} Months</h1>
             <PriceContainer>

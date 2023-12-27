@@ -54,7 +54,7 @@ const LeftFooter = styled.div`
   justify-content: center;
   flex-direction: column;
   max-width: 500px;
-  @media (max-width: 768) {
+  @media (max-width: 768px) {
     min-width: 300px;
   }
 `;

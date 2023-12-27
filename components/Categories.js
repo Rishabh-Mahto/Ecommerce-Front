@@ -46,7 +46,7 @@ export default function Categories() {
       <Title>Category</Title>
       <DifCategory>
         {CategoryData.map((category) => (
-          <Category href={`/products?category=${category}`}>
+          <Category key={category} href={`/products?category=${category}`}>
             {category}
           </Category>
         ))}

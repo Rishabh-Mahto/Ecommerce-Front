@@ -188,6 +188,7 @@ function OrderInformation({ user, price, cart }) {
               <h3>Select Address</h3>
               {user.address.map((el, index) => (
                 <AddressOption
+                  key={index}
                   onClick={() => setActiveAddress(index)}
                   selected={index === activeAddress}
                 >{`${el.streetAddress}, ${el.city}, ${el.state}, ${el.postalCode}`}</AddressOption>

@@ -1,14 +1,11 @@
 import Button from "@/components/Button";
 import Header from "@/components/Header";
 import styled from "styled-components";
-import WhiteBox from "@/components/WhiteBox";
 import { useEffect, useState } from "react";
-import Input from "@/components/Input";
 import axios from "axios";
 import { signIn, signOut, useSession } from "next-auth/react";
 import dayjs from "dayjs";
 import Footer from "@/components/Footer";
-import { Order } from "@/models/Order";
 
 const StyleAcoount = styled.div`
   background-color: #f5f5f5;
