@@ -123,7 +123,7 @@ export default function CartPage() {
     } else {
       setProducts([]);
     }
-  }, [cartProducts, data, fetchUser]);
+  }, [cartProducts, data]);
 
   function moreOfThisProduct(id) {
     addProduct(id);
