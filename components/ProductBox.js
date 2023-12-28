@@ -21,8 +21,8 @@ const ProductWrapper = styled.div`
   @media (max-width: 768px) {
     margin: 0px;
     height: 300px;
-    width: 187px;
-    padding: 1.3rem;
+    width: 175px;
+    padding: 1.1rem;
   }
 `;
 
@@ -32,6 +32,9 @@ const Title = styled(Link)`
   text-decoration: none;
   font-weight: 600;
   margin: 5px 0;
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const ProductInfoBox = styled.div`
@@ -44,13 +47,6 @@ const ProductInfoBox = styled.div`
 
 const Category = styled.p`
   font-weight: 500;
-  /* background: #e1eeff;
-  padding: 4px 12px;
-  border-radius: 8px;
-  @media (max-width: 768px) {
-    padding: 4px 4px;
-    border-radius: 6px;
-  } */
 `;
 
 const CategoryStyle = styled.div`
@@ -72,6 +68,9 @@ const PriceRow = styled.div`
   justify-content: space-between;
   margin-top: 16px;
   width: 100%;
+  @media (max-width: 768px) {
+    margin-top: 8px;
+  }
 `;
 
 const AddToCart = styled.div`
@@ -94,12 +93,18 @@ const Price = styled.div`
   color: #94a3b8;
   text-decoration: line-through;
   margin-right: 0.5rem;
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const Discount = styled.div`
   font-size: 1.5rem;
   font-weight: 600;
   color: #475569;
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;
 
 export default function ProductBox({
@@ -120,7 +125,12 @@ export default function ProductBox({
   return (
     <ProductWrapper>
       <ProductInfoBox>
-        <Image src={images[0][0]} width={130} height={180} alt="" />
+        <Image
+          src={images[0][0]}
+          width={130}
+          height={180}
+          alt="Image Loading"
+        />
         <Title href={url}>{title}</Title>
       </ProductInfoBox>
 

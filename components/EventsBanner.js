@@ -22,7 +22,7 @@ const EventWrapper = styled.div`
   padding-left: 100px;
   transform: skew(-2.5deg);
   @media (max-width: 768px) {
-    gap: 40px;
+    gap: 1rem;
     height: 100%;
     flex-direction: column;
     padding-left: 0px;
@@ -58,14 +58,14 @@ const TextContainer = styled.div`
     font-size: 1.2rem;
   }
   @media (max-width: 1300px) {
-    width: 85%;
+    width: 90%;
     h1 {
-      font-size: 1.9rem;
-      line-height: 2rem;
+      font-size: 1.5rem;
+      line-height: 1.5rem;
     }
     p {
-      margin-top: 10px;
-      font-size: 1rem;
+      margin-top: 8px;
+      font-size: 14px;
     }
   }
 `;

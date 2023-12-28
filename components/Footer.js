@@ -20,7 +20,8 @@ const FooterContainer = styled.div`
   hr {
     width: 90%;
     border-top: 0.1px solid #eee;
-    margin: 40px 0 20px 0;
+    margin: 20px 0 20px 0;
+    /* padding: 20px; */
   }
 
   p {
@@ -39,7 +40,7 @@ const FooterPart = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 0 100px;
+  padding: 0 60px;
   justify-content: space-between;
   @media (max-width: 768px) {
     flex-direction: column;
@@ -55,7 +56,8 @@ const LeftFooter = styled.div`
   flex-direction: column;
   max-width: 500px;
   @media (max-width: 768px) {
-    min-width: 300px;
+    min-width: 250px;
+    padding: 20px;
   }
 `;
 
@@ -190,7 +192,7 @@ export default function Footer() {
                 href="https://www.instagram.com/readonrent.in/"
                 target="_blank"
               >
-                <SocialImg src="/InstagramLogo.png" />
+                <SocialImg src="/Instagramlogo.png" />
               </LogoFooter>
             </SocialLogo>
             <SocialLogo>

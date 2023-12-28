@@ -5,7 +5,11 @@ import ButtonLink from "./ButtonLink";
 
 const Slider = styled.div`
   margin: 0 15%;
-  width: 70%;
+  width: 80%;
+  @media (max-width: 768px) {
+    margin: 0 4%;
+    width: 90%;
+  }
 `;
 
 const Carousel = styled(motion.div)`
@@ -26,9 +30,10 @@ const CarouselItems = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   @media (max-width: 768px) {
-    min-height: 280px;
-    min-width: 250px;
+    min-height: 250px;
+    min-width: 80%;
   }
 `;
 

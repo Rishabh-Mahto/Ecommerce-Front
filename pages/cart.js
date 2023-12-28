@@ -28,6 +28,7 @@ const CartWrapper = styled.div`
   h2 {
     font-family: "Poppins";
     font-size: 3rem;
+    padding: 30px;
   }
 `;
 
@@ -57,6 +58,11 @@ const TextBox = styled.div`
     font-family: "Poppins";
     font-size: 1.5rem;
   }
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 1rem;
+    }
+  }
 `;
 
 const QuantityLabel = styled.span`
@@ -64,6 +70,9 @@ const QuantityLabel = styled.span`
   margin: 0 10px;
   font-family: "Poppins";
   font-size: 1.5rem;
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
 `;
 
 const ChangeButton = styled.button`
@@ -101,6 +110,9 @@ const Price = styled.p`
   font-size: 1.5rem;
   font-weight: 500;
   color: #475569;
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
 `;
 
 export default function CartPage() {

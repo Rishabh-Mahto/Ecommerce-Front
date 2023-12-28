@@ -6,6 +6,9 @@ const ImageContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 1rem;
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 const Image = styled.img`
   max-width: 100%;

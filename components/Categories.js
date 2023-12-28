@@ -12,11 +12,16 @@ const CategoryDiv = styled.div`
 `;
 
 const Title = styled.h1`
+  display: flex;
+  flex-wrap: wrap;
   font-size: 4rem;
   color: #35373b;
   font-family: "Poppins";
   text-transform: uppercase;
   letter-spacing: 0.5rem;
+  @media (max-width: 768px) {
+    font-size: 3rem;
+  }
 `;
 
 const DifCategory = styled.div`

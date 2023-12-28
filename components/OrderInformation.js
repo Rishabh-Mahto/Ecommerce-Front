@@ -221,6 +221,7 @@ function OrderInformation({ user, price, cart }) {
 
 const OrderContainer = styled.div`
   display: flex;
+
   flex-direction: column;
   padding: 50px;
   width: 450px;
@@ -231,8 +232,8 @@ const OrderContainer = styled.div`
   border-radius: 8px;
   background-color: white;
   @media (max-width: 768px) {
-    margin: 95px 0px 95px 15px;
-    width: 370px;
+    margin: 90px 0px 90px 0px;
+    width: 340px;
   }
   h1 {
     font-family: "Poppins";

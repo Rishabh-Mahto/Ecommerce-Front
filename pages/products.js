@@ -9,14 +9,14 @@ import { useRouter } from "next/router";
 import Footer from "@/components/Footer";
 
 const Wrapper = styled.div`
-  margin: 0 20px 50px;
+  margin: 0 50px 50px;
   @media (max-width: 768px) {
-    margin: 0px 5px 50px 3px;
+    margin: 0px 3px 50px 3px;
   }
 `;
 
 const Title = styled.div`
-  font-size: 2.5em;
+  font-size: 2.2em;
   font-weight: 600;
   padding: 0.5em;
 `;
@@ -25,7 +25,8 @@ const Center = styled.div`
 `;
 const ProdutctCol = styled.div`
   display: flex;
-  padding: 0.5em;
+  flex-wrap: wrap;
+  padding: 0.5rem;
 `;
 
 export default function ProductsPage({ products }) {

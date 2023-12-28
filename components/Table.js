@@ -10,7 +10,8 @@ const StyledTable = styled.table`
   display: flex;
   flex-direction: column;
   @media (max-width: 768px) {
-    width: 400px;
+    width: 340px;
+    padding: 25px;
   }
 
   thead {
@@ -25,6 +26,7 @@ const StyledTable = styled.table`
       padding: 12px 30px;
       flex-wrap: wrap;
       @media (max-width: 768px) {
+        padding: 12px 15px;
       }
       &:first-child {
         width: 600px;
@@ -36,13 +38,15 @@ const StyledTable = styled.table`
     tr {
       display: flex;
       justify-content: space-between;
-      @media (max-width: 768px) {
-      }
+      gap: 3px;
       td {
         padding: 19px;
         color: #333;
         display: flex;
         align-items: center;
+        @media (max-width: 768px) {
+          padding: 15px;
+        }
       }
     }
   }
