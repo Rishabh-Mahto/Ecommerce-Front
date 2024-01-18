@@ -4,11 +4,11 @@ import { useRef, useEffect, useState, useContext } from "react";
 import ButtonLink from "./ButtonLink";
 
 const Slider = styled.div`
-  margin: 0 15%;
-  width: 80%;
+  margin: 0 20%;
+  width: 60%;
   @media (max-width: 768px) {
-    margin: 0 4%;
-    width: 90%;
+    margin: 0 15%;
+    width: 65%;
   }
 `;
 
@@ -24,16 +24,17 @@ const InnerCarousel = styled(motion.div)`
 `;
 
 const CarouselItems = styled(motion.div)`
-  min-height: 300px;
-  min-width: 270px;
+  min-height: 280px;
+  min-width: 250px;
   padding: 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   @media (max-width: 768px) {
-    min-height: 250px;
-    min-width: 80%;
+    min-height: 220px;
+    min-width: 60%;
+    padding: 10px;
   }
 `;
 

@@ -29,6 +29,9 @@ const DifCategory = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
+  @media (max-width: 768px) {
+    gap: 10px;
+  }
 `;
 
 const Category = styled(Link)`
@@ -42,6 +45,10 @@ const Category = styled(Link)`
   transition: all 0.3s ease-in-out;
   &:hover {
     background-color: #e1eeff;
+  }
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding: 5px 10px;
   }
 `;
 

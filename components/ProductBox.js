@@ -20,9 +20,9 @@ const ProductWrapper = styled.div`
   padding: 2.1rem;
   @media (max-width: 768px) {
     margin: 0px;
-    height: 300px;
-    width: 175px;
-    padding: 1.1rem;
+    height: 280px;
+    width: 160px;
+    padding: 1.4rem;
   }
 `;
 
@@ -33,7 +33,7 @@ const Title = styled(Link)`
   font-weight: 600;
   margin: 5px 0;
   @media (max-width: 768px) {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 `;
 
@@ -94,7 +94,7 @@ const Price = styled.div`
   text-decoration: line-through;
   margin-right: 0.5rem;
   @media (max-width: 768px) {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 `;
 
@@ -103,7 +103,7 @@ const Discount = styled.div`
   font-weight: 600;
   color: #475569;
   @media (max-width: 768px) {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 `;
 
@@ -127,8 +127,8 @@ export default function ProductBox({
       <ProductInfoBox>
         <Image
           src={images[0][0]}
-          width={130}
-          height={180}
+          width={110}
+          height={160}
           alt="Image Loading"
         />
         <Title href={url}>{title}</Title>

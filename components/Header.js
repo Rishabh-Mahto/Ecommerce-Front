@@ -10,6 +10,13 @@ import Search from "./icons/Search";
 const StyledHeader = styled.header`
   background-color: #e8e8e6;
   padding: 0 60px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -20,7 +27,6 @@ const Wrapper = styled.div`
   background-color: #e8e8e6;
   @media screen and (max-width: 768px) {
     flex-direction: column;
-    position: static;
   }
 `;
 
@@ -46,26 +52,39 @@ const Center = styled.div`
     css`
       display: none;
     `}
+  @media (max-width: 768px) {
+    align-items: none;
+    justify-content: none;
+  }
 `;
 
 const Btn = styled.button`
-  background-color: #f90716;
+  background-color: #ff4f5b;
+  background-image: linear-gradient(to right, #ff4f5b, #f90716);
   border: none;
   outline: none;
-  font-size: 15px;
-  padding: 13px 17px;
-  margin: 6px auto;
+  font-size: 16px;
+  padding: 12px 20px;
+  margin: 10px auto;
   border-radius: 30px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out,
+    box-shadow 0.3s ease-in-out;
 
   &:hover {
     background-color: #da0037;
     transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
   }
 
   &:active {
     transform: scale(0.95);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 10px 16px;
   }
 `;
 
@@ -74,19 +93,16 @@ const Right = styled.div`
   align-items: center;
   font-size: 18px;
   gap: 27px;
-  margin: 0;
   padding: 0px 30px;
   ${(props) =>
     props.hidden &&
     css`
       display: none;
     `}
-`;
-
-const NavBtn = styled.div`
-  cursor: pointer;
-  @media screen and (min-width: 768px) {
-    display: none;
+  @media (max-width: 768px) {
+    align-items: none;
+    gap: 12px;
+    padding: 0;
   }
 `;
 
@@ -98,9 +114,10 @@ const NavLink = styled(Link)`
     css`
       color: #fff;
     `}
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
-
-const CartStyle = styled.div``;
 
 const CartCount = styled.span`
   color: #cd0404;
@@ -108,53 +125,55 @@ const CartCount = styled.span`
   font-size: 16px;
 `;
 
-const DropdownMenu = styled.div``;
-
 export default function Header() {
   const { cartProducts } = useContext(CartContext);
-  const [hidden, setHidden] = useState(false);
-
-  const toggleVisibility = () => {
-    setHidden(!hidden);
-  };
 
   return (
     <>
       <StyledHeader>
         <Wrapper>
-          <Left>
-            <Logo href={"/"}>
-              <h3>ReadOnRent</h3>
-            </Logo>
-          </Left>
-          <NavBtn onClick={() => toggleVisibility()}>
-            <BarsIcon />
-          </NavBtn>
-          <Center hidden={hidden}>
-            <NavLink href={"/products"}>All Products</NavLink>
-            <Btn>
-              <NavLink primary={1} href={"/membership"}>
-                Membership
+          <div>
+            <Left>
+              <Logo href={"/"}>
+                <h3>ReadOnRent</h3>
+              </Logo>
+            </Left>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "70px",
+            }}
+          >
+            <Center>
+              <NavLink href={"/products"}>All Products</NavLink>
+              <Btn>
+                <NavLink primary={1} href={"/membership"}>
+                  Membership
+                </NavLink>
+              </Btn>
+              <NavLink href={"/search"}>
+                <Search />
               </NavLink>
-            </Btn>
-            <NavLink href={"/search"}>
-              <Search />
-            </NavLink>
-          </Center>
-          <Right hidden={hidden}>
-            <NavLink href={"/cart"}>
-              <CartStyle>
-                <FontAwesomeIcon
-                  icon={faBagShopping}
-                  style={{ color: "#101011" }}
-                />
-                <CartCount>{cartProducts.length}</CartCount>
-              </CartStyle>
-            </NavLink>
-            <NavLink href={"/account"}>
-              <FontAwesomeIcon icon={faUser} style={{ color: "#121212" }} />
-            </NavLink>
-          </Right>
+            </Center>
+
+            <Right>
+              <NavLink href={"/cart"}>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faBagShopping}
+                    style={{ color: "#101011" }}
+                  />
+                  <CartCount>{cartProducts.length}</CartCount>
+                </div>
+              </NavLink>
+              <NavLink href={"/account"}>
+                <FontAwesomeIcon icon={faUser} style={{ color: "#121212" }} />
+              </NavLink>
+            </Right>
+          </div>
         </Wrapper>
       </StyledHeader>
     </>

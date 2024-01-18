@@ -57,7 +57,7 @@ const LeftFooter = styled.div`
   max-width: 500px;
   @media (max-width: 768px) {
     min-width: 250px;
-    padding: 20px;
+    padding: 20px 0px;
   }
 `;
 

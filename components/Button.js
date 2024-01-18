@@ -18,7 +18,7 @@ export const ButtonStyle = css`
     css`
       background-color: #ebebeb;
       border: none;
-      padding: 8px 20px;
+      padding: 8px 10px;
       transition: all 0.1s ease-in-out;
       font-family: "Poppins";
       font-weight: 500;

@@ -38,7 +38,6 @@ const StyledTable = styled.table`
     tr {
       display: flex;
       justify-content: space-between;
-      gap: 3px;
       td {
         padding: 19px;
         color: #333;

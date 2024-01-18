@@ -26,6 +26,7 @@ const EventWrapper = styled.div`
     height: 100%;
     flex-direction: column;
     padding-left: 0px;
+    transform: skew(0deg);
   }
 `;
 
@@ -44,7 +45,7 @@ const ImageContainer = styled.div`
 const TextContainer = styled.div`
   width: 500px;
   height: 380px;
-  color: #475569;
+  color: #35373b;
 
   h1 {
     font-family: "Poppins";

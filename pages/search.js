@@ -8,7 +8,7 @@ import debounce from "lodash/debounce";
 import Spinner from "@/components/Spinner";
 
 const Wrapper = styled.div`
-  padding: 20px;
+  padding: 20px 60px;
   @media (max-width: 768px) {
     padding: 10px;
   }
