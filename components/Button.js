@@ -22,6 +22,7 @@ export const ButtonStyle = css`
       transition: all 0.1s ease-in-out;
       font-family: "Poppins";
       font-weight: 500;
+      opacity: 0.8;
 
       &:hover {
         background-color: #fff;

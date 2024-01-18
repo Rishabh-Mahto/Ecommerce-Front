@@ -10,8 +10,8 @@ const StyledTable = styled.table`
   display: flex;
   flex-direction: column;
   @media (max-width: 768px) {
-    width: 340px;
-    padding: 25px;
+    width: 350px;
+    padding: 5px;
   }
 
   thead {

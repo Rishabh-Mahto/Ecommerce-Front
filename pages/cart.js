@@ -21,14 +21,15 @@ const ColumnWrapper = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     margin: 8px;
+    align-items: center;
   }
 `;
 
 const CartWrapper = styled.div`
   h2 {
     font-family: "Poppins";
-    font-size: 3rem;
-    padding: 30px;
+    font-size: 2.5rem;
+    padding: 20px 0;
   }
 `;
 
@@ -37,10 +38,13 @@ const ProductInfoCell = styled.td`
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   width: 600px;
   @media (max-width: 786px) {
     width: 150px;
+    padding: 5px 0;
+    justify-content: flex-start;
   }
 `;
 
@@ -48,9 +52,11 @@ const ProductImageBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 75px;
+  width: 55px;
   height: 80px;
-  margin-right: 12px;
+  @media (max-width: 768px) {
+    overflow: hidden;
+  }
 `;
 
 const TextBox = styled.div`

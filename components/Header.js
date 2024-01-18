@@ -27,6 +27,7 @@ const Wrapper = styled.div`
   background-color: #e8e8e6;
   @media screen and (max-width: 768px) {
     flex-direction: column;
+    padding: 7px 0;
   }
 `;
 
@@ -145,6 +146,7 @@ export default function Header() {
               alignItems: "center",
               justifyContent: "space-between",
               gap: "70px",
+              marginTop: "4px",
             }}
           >
             <Center>

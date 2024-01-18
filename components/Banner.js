@@ -15,16 +15,37 @@ export default function Banner() {
           </b>
         </p>
         <br />
-        <div>
-          <p>Explore Our Store</p>
-          <NavLink href={"/search"}>
-            <Search style={{ padding: "20px" }} />
-          </NavLink>
-        </div>
+        <NavLink
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: " center",
+            fontSize: "1rem",
+            gap: "8px",
+            position: "relative",
+          }}
+          href={"/search"}
+        >
+          <p>
+            <b>Explore Our Store</b>
+          </p>
+          <Search style={{ padding: "20px" }} />
+          <Underline />
+        </NavLink>
       </ContentBox>
     </div>
   );
 }
+
+const Underline = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-60%);
+  width: 70%;
+  height: 2px;
+  background-color: #bb1806;
+`;
 
 const HeroBanner = styled.div`
   background-image: url("/herobanner2.jpg");
@@ -59,16 +80,16 @@ const ContentBox = styled.div`
     font-family: "Poppins";
     font-size: 1.5rem;
     color: #262d37;
+    padding: 7px;
   }
   @media (max-width: 768px) {
-    width: 300px;
+    width: 350px;
     top: 20%;
     h1 {
-      transform: translateX(-6.5%);
-      font-size: 1.2rem;
+      font-size: 1.5rem;
     }
     p {
-      font-size: 0.8rem;
+      font-size: 1rem;
     }
   }
 `;

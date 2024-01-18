@@ -3,6 +3,7 @@ import ProductBox from "./ProductBox";
 
 const StyledProductsGrid = styled.div`
   display: flex;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   gap: 27px;
   @media (max-width: 768px) {

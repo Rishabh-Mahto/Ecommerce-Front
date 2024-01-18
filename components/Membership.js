@@ -156,14 +156,8 @@ export default function Membership() {
               onClick={() => addProduct(data.productId)}
               primary={1}
               style={{
-                fontSize:
-                  typeof window !== "undefined" && window.innerWidth <= 768
-                    ? "14px"
-                    : "inherit",
-                padding:
-                  typeof window !== "undefined" && window.innerWidth <= 768
-                    ? "8px 14px"
-                    : "inherit",
+                fontSize: "14px",
+                padding: "8px 14px",
               }}
             >
               Add to Cart

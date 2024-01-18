@@ -25,6 +25,7 @@ const Center = styled.div`
 `;
 const ProdutctCol = styled.div`
   display: flex;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   padding: 0.5rem;
 `;
