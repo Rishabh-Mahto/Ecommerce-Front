@@ -221,14 +221,13 @@ function OrderInformation({ user, price, cart }) {
 
 const OrderContainer = styled.div`
   display: flex;
-
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   flex-direction: column;
   padding: 50px;
   width: 450px;
   height: fit-content;
   min-height: 400px;
   margin: 95px 0 0 50px;
-  border: 1px solid #475569;
   border-radius: 8px;
   background-color: white;
   @media (max-width: 768px) {

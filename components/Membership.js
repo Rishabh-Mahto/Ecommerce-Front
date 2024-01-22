@@ -163,7 +163,7 @@ export default function Membership() {
               Add to Cart
             </Button>
             <Link
-              href={"#"}
+              href={"/terms&conditions"}
               style={{
                 textDecoration: "none",
                 paddingTop: "20px",

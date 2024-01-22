@@ -4,11 +4,13 @@ const StyledTable = styled.table`
   background-color: #fff;
   margin-top: 20px;
   font-family: "Poppins";
-  border: 1px solid #475569;
   border-radius: 8px;
   padding: 20px;
   display: flex;
   flex-direction: column;
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
   @media (max-width: 768px) {
     width: 350px;
     padding: 5px;

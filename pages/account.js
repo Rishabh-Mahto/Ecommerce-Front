@@ -30,6 +30,7 @@ const MembershipContainer = styled.div`
   background-color: #fff;
   border-radius: 10px;
   padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
     width: 100%;
@@ -42,15 +43,12 @@ const DetailsContainer = styled.div`
   background-color: #fff;
   border-radius: 10px;
   padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
     width: 100%;
     padding: 30px;
   }
-`;
-const CityHolder = styled.div`
-  display: flex;
-  gap: 5px;
 `;
 
 const UserDetails = styled.div`

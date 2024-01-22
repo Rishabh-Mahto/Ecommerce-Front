@@ -32,7 +32,6 @@ const ProdutctCol = styled.div`
 
 export default function ProductsPage({ products }) {
   const { data, status } = useSession();
-  console.log(data, status);
   const [books, setBooks] = useState(products);
   const router = useRouter();
 
