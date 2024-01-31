@@ -20,13 +20,13 @@ export function CartContextProvider({ children }) {
     }
   }, []);
 
-  const notifySucess = (message) => toast.success(message);
+  const notifySuccess = (message) => toast.success(message);
   const notify = (message) => toast.info(message);
 
   function addProduct(productId) {
     setCartProducts((prev) => {
       const newCart = [...prev, productId];
-      notifySucess("Product added to the cart!");
+      notifySuccess("Product added to the cart!");
       return newCart;
     });
   }
@@ -36,7 +36,7 @@ export function CartContextProvider({ children }) {
       const pos = prev.indexOf(productId);
       if (pos !== -1) {
         const newCart = prev.filter((value, index) => index !== pos);
-        notify(`Product  removed from the cart!`);
+        notify(`Product removed from the cart!`);
         return newCart;
       }
       return prev;
@@ -61,7 +61,7 @@ export function CartContextProvider({ children }) {
         theme="dark"
         style={{
           marginTop: "50px",
-          height: "5px",
+          width: "300px",
         }}
       />
     </CartContext.Provider>

@@ -5,7 +5,7 @@ import { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import Table from "@/components/Table";
-import { useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import OrderInformation from "@/components/OrderInformation";
 
@@ -15,7 +15,7 @@ const PageContainer = styled.div`
 
 const ColumnWrapper = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   margin: 50px;
   @media (max-width: 768px) {
@@ -36,21 +36,22 @@ const CartWrapper = styled.div`
 const ProductInfoCell = styled.td`
   padding: 10px 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  gap: 10px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
   width: 600px;
   @media (max-width: 786px) {
     width: 150px;
     padding: 5px 0;
     justify-content: flex-start;
+    line-height: 18px;
   }
 `;
 
 const ProductImageBox = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   width: 55px;
   height: 80px;
@@ -62,11 +63,11 @@ const ProductImageBox = styled.div`
 const TextBox = styled.div`
   h1 {
     font-family: "Poppins";
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   @media (max-width: 768px) {
     h1 {
-      font-size: 1rem;
+      font-size: 14px;
     }
   }
 `;
@@ -108,6 +109,7 @@ const CategoryBox = styled.div`
     background: #e1eeff;
     padding: 4px 8px;
     border-radius: 8px;
+    margin-top: 5px;
   }
 `;
 
@@ -117,7 +119,7 @@ const Price = styled.p`
   font-weight: 500;
   color: #475569;
   @media (max-width: 768px) {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
 `;
 
@@ -226,12 +228,15 @@ export default function CartPage() {
                   </tr>
                 ))}
                 <hr />
-                <tr>
-                  <td />
-                  <td>
-                    <Price>₹{total}</Price>
-                  </td>
-                </tr>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    paddingRight: "10px",
+                  }}
+                >
+                  <Price>{total}</Price>
+                </div>
                 <tr>
                   <td />
                   <td>

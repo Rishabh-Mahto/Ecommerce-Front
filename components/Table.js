@@ -19,7 +19,6 @@ const StyledTable = styled.table`
   thead {
     color: #787474;
     display: flex;
-    justify-content: space-between;
     @media (max-width: 768px) {
     }
     th {
@@ -39,7 +38,6 @@ const StyledTable = styled.table`
   tbody {
     tr {
       display: flex;
-      justify-content: space-between;
       td {
         padding: 19px;
         color: #333;

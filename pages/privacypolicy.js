@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import styled from "styled-components";
 
 const DocStyle = styled.div`
-  margin: 50px;
+  margin: 50px 0 100px 50px;
 `;
 
 export default function Privacy() {
@@ -35,7 +35,7 @@ export default function Privacy() {
         this option in your browser. For purchasing, it’s not necessary to
         switch on the cookie in the browser option.
       </DocStyle>
-      <Footer />
+      <Footer style={{ marginTop: "50px" }} />
     </>
   );
 }

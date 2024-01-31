@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Button from "./Button";
 import Input from "./Input";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { signIn, signOut, useSession } from "next-auth/react";
 import { ORDER_STATUS } from "./data/Constants";
 
 const AddressInput = ({ email }) => {
   const [error, setError] = useState(null);
-
   const [streetAddress, setStreetAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
@@ -103,6 +103,24 @@ function OrderInformation({ user, price, cart }) {
   const [phone, setPhone] = useState(null);
   const [activeAddress, setActiveAddress] = useState(0);
   const [newAddress, setNewAddress] = useState(false);
+  const { data, status } = useSession();
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      if (status === "authenticated") {
+        try {
+          const response = await axios.post("/api/user", {
+            email: data?.user?.email,
+          });
+          const fetchedUser = response.data;
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        }
+      }
+    };
+
+    fetchUser();
+  }, [status, data?.user]);
 
   const router = useRouter();
 
@@ -144,11 +162,7 @@ function OrderInformation({ user, price, cart }) {
   return (
     <OrderContainer>
       <h1>Order Details : </h1>
-      {!user ? (
-        <Button secondary={1} style={{ width: "fit-content" }}>
-          Login
-        </Button> // this is yet to be added
-      ) : (
+      {status === "authenticated" && user ? (
         <UserBox>
           <UserInfo>
             <h2>{user.name}</h2>
@@ -214,6 +228,14 @@ function OrderInformation({ user, price, cart }) {
             CONTINUE TO PAYMENT
           </Button>
         </UserBox>
+      ) : (
+        <Button
+          secondary={1}
+          style={{ width: "fit-content" }}
+          onClick={() => signIn("google")}
+        >
+          Login
+        </Button>
       )}
     </OrderContainer>
   );
