@@ -25,7 +25,7 @@ const MembershipContainer = styled.div`
   @media (max-width: 768px) {
     padding: 0 30px;
     h1 {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       padding-top: 10px;
     }
   }

@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { injectStyle } from "react-toastify/dist/inject-style";
 
 export const CartContext = createContext({});
 
@@ -49,7 +50,7 @@ export function CartContextProvider({ children }) {
     >
       {children}
       <ToastContainer
-        position="top-right"
+        position="top-center"
         autoClose={1000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -60,8 +61,10 @@ export function CartContextProvider({ children }) {
         pauseOnHover={false}
         theme="dark"
         style={{
-          marginTop: "50px",
-          width: "300px",
+          marginTop: "80px",
+          fontSize: "13px",
+          width: "250px",
+          transform: "translateX(150px)",
         }}
       />
     </CartContext.Provider>

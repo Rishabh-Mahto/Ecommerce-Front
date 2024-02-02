@@ -235,7 +235,7 @@ export default function CartPage() {
                     paddingRight: "10px",
                   }}
                 >
-                  <Price>{total}</Price>
+                  <Price>₹ {total}</Price>
                 </div>
                 <tr>
                   <td />

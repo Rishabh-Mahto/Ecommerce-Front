@@ -41,6 +41,17 @@ const Logo = styled(Link)`
   text-decoration: none;
   padding: 0 20px;
 `;
+const NavResponsive = styled.div`
+  display: flex;
+  transform: translateX(-50px);
+  gap: 500px;
+  @media (max-width: 768px) {
+    transform: none;
+    display: flex;
+    gap: 40px;
+    margin-top: 4px;
+  }
+`;
 
 const Center = styled.div`
   display: flex;
@@ -56,6 +67,7 @@ const Center = styled.div`
   @media (max-width: 768px) {
     align-items: none;
     justify-content: none;
+    gap: 25px;
   }
 `;
 
@@ -140,15 +152,8 @@ export default function Header() {
               </Logo>
             </Left>
           </div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: "70px",
-              marginTop: "4px",
-            }}
-          >
+
+          <NavResponsive>
             <Center>
               <NavLink href={"/products"}>All Products</NavLink>
               <Btn>
@@ -175,7 +180,7 @@ export default function Header() {
                 <FontAwesomeIcon icon={faUser} style={{ color: "#121212" }} />
               </NavLink>
             </Right>
-          </div>
+          </NavResponsive>
         </Wrapper>
       </StyledHeader>
     </>
