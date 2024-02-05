@@ -44,7 +44,7 @@ const Logo = styled(Link)`
 const NavResponsive = styled.div`
   display: flex;
   transform: translateX(-50px);
-  gap: 500px;
+  gap: 400px;
   @media (max-width: 768px) {
     transform: none;
     display: flex;

@@ -8,34 +8,40 @@ export default function CheckoutPage() {
   const [order, setOrder] = useState(null);
   const router = useRouter();
   const { orderId } = router.query;
+  console.log(orderId);
 
   const fetchOrder = async () => {
-    const _order = await axios.post("/api/orders", { id: orderId });
-    setOrder(_order.data);
+    const _order = await axios.get(`/api/orders?id=${orderId}`);
+    const user = await axios.post("/api/user", {
+      email: _order.data?.userEmail,
+    });
+    setOrder({ ..._order.data, name: user.data.name });
   };
 
   useEffect(() => {
-    fetchOrder();
-  }, []);
+    if (orderId) {
+      fetchOrder();
+    }
+  }, [orderId]);
 
   const handlePayment = async () => {
     const paymentPayload = {
-      name: "Rishabh",
-      number: "7987150636",
+      name: order.name,
       amount: 1,
     };
 
-    console.log(paymentPayload);
-
-    await axios.post("/api/phonepay/payment", paymentPayload);
+    if (order) {
+      const url = await axios.post("/api/phonepay/payment", paymentPayload);
+      router.push(url.data);
+    }
   };
 
   return (
     <>
       <Header />
-      <h1>{orderId}</h1>
+      <p>{JSON.stringify(order)}</p>
       <Button primary={1} onClick={handlePayment}>
-        Payment Test
+        Continue to payment
       </Button>
     </>
   );

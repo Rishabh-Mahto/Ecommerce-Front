@@ -159,6 +159,33 @@ function OrderInformation({ user, price, cart }) {
     }
   };
 
+  const handlePayment = async () => {
+    const createOrderPayload = {
+      userEmail: user.email,
+      status: ORDER_STATUS.INITIATED,
+      isRentOrder: false,
+      isDelivery: true,
+      deliveryAddress: user.address[activeAddress],
+      productId: cart,
+      price: price > 499 ? price : price + 40,
+    };
+
+    try {
+      const order = await axios.post("/api/orders/add", createOrderPayload);
+      // router.push(`/checkout/${order.data.data._id}`);
+      const paymentPayload = {
+        name: order.name,
+        amount: 1,
+      };
+
+      if (order) {
+        await axios.post("/api/phonepay/payment", paymentPayload);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <OrderContainer>
       <h1>Order Details : </h1>
@@ -221,7 +248,7 @@ function OrderInformation({ user, price, cart }) {
             </AddressList>
           )}
           <Button
-            onClick={handleCreateOrder}
+            onClick={handlePayment}
             tertiary={1}
             style={{ width: "fit-content", marginTop: "20px" }}
           >
