@@ -4,6 +4,6 @@ module.exports = {
     styledComponents: true,
   },
   images: {
-    domains: ["next-readonrent.s3.amazonaws.com"],
+    domains: ["readonrent.s3.amazonaws.com"],
   },
 };
